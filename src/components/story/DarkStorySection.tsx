@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import TextType from '@/components/TextType'
 
 const DRUM_ASCII = `
       ||    ||
@@ -119,9 +120,40 @@ export function DarkStorySection() {
         <p className="dark-story-prompt">
           <span className="dark-prompt-caret">$</span> cat /proc/our_story
         </p>
-        <p className="dark-story-comment">{'// loading relationship logs...'}</p>
-        <p className="dark-story-comment">{'// found: 9 years of entries'}</p>
-        <p className="dark-story-comment">{'// rendering...'}</p>
+        <div className="dark-typing-block">
+          <TextType
+            text="// loading relationship logs..."
+            as="p"
+            className="dark-story-comment dark-typing-line"
+            typingSpeed={30}
+            initialDelay={300}
+            showCursor={false}
+            loop={false}
+            startOnVisible
+          />
+        </div>
+        <div className="dark-typing-block">
+          <TextType
+            text="// found: 9 years of entries"
+            className="dark-story-comment dark-typing-line"
+            typingSpeed={30}
+            initialDelay={1200}
+            showCursor={false}
+            loop={false}
+            startOnVisible
+          />
+        </div>
+        <div className="dark-typing-block">
+          <TextType
+            text="// rendering..."
+            className="dark-story-comment dark-typing-line"
+            typingSpeed={30}
+            initialDelay={2400}
+            showCursor={false}
+            loop={false}
+            startOnVisible
+          />
+        </div>
       </DarkBlock>
 
       {/* ASCII 드럼 아트 */}
@@ -168,13 +200,22 @@ export function DarkStorySection() {
           <span className="dark-prompt-caret">$</span> git log --oneline --all
         </p>
         <ul className="dark-log-list" aria-label="관계의 커밋 히스토리">
-          {gitLog.map((entry) => (
+          {gitLog.map((entry, i) => (
             <li key={entry.hash} className="dark-log-entry">
               <span className="dark-log-hash">{entry.hash}</span>
               <span className={`dark-log-type dark-log-type--${entry.type}`}>
                 {entry.type}
               </span>
-              <span className="dark-log-message">{entry.message}</span>
+              <TextType
+                text={entry.message}
+                as="span"
+                className="dark-log-message"
+                typingSpeed={20}
+                initialDelay={400 * i + 500}
+                showCursor={false}
+                loop={false}
+                startOnVisible
+              />
               {entry.note && (
                 <span className="dark-log-note" aria-label={`노트: ${entry.note}`}>
                   {entry.note}
@@ -205,11 +246,20 @@ export function DarkStorySection() {
           <span className="dark-prompt-caret">$</span> ./relationship --status
         </p>
         <ul className="dark-status-list" aria-label="관계 상태 지표">
-          {systemStatus.map((item) => (
+          {systemStatus.map((item, i) => (
             <li key={item.label} className="dark-status-item">
               <span className="dark-status-label">{item.label}</span>
               <span className="dark-status-sep">:</span>
-              <span className="dark-status-value">{item.value}</span>
+              <TextType
+                text={item.value}
+                as="span"
+                className="dark-status-value"
+                typingSpeed={25}
+                initialDelay={500 * i + 400}
+                showCursor={false}
+                loop={false}
+                startOnVisible
+              />
             </li>
           ))}
         </ul>
@@ -244,15 +294,42 @@ export function DarkStorySection() {
         <p className="dark-story-prompt">
           <span className="dark-prompt-caret">$</span> ./wedding.sh \
         </p>
-        <p className="dark-story-prompt dark-story-prompt--indent">
-          --date 2026-10-18 \
-        </p>
-        <p className="dark-story-prompt dark-story-prompt--indent">
-          --venue snu-faculty-club \
-        </p>
-        <p className="dark-story-prompt dark-story-prompt--indent">
-          --guests everyone-we-love
-        </p>
+        <div className="dark-typing-block">
+          <TextType
+            text="  --date 2026-10-18 \"
+            as="p"
+            className="dark-story-prompt dark-story-prompt--indent"
+            typingSpeed={25}
+            initialDelay={400}
+            showCursor={false}
+            loop={false}
+            startOnVisible
+          />
+        </div>
+        <div className="dark-typing-block">
+          <TextType
+            text="  --venue snu-faculty-club \"
+            as="p"
+            className="dark-story-prompt dark-story-prompt--indent"
+            typingSpeed={25}
+            initialDelay={1400}
+            showCursor={false}
+            loop={false}
+            startOnVisible
+          />
+        </div>
+        <div className="dark-typing-block">
+          <TextType
+            text="  --guests everyone-we-love"
+            as="p"
+            className="dark-story-prompt dark-story-prompt--indent"
+            typingSpeed={25}
+            initialDelay={2600}
+            showCursor={false}
+            loop={false}
+            startOnVisible
+          />
+        </div>
         <div className="dark-story-output" aria-live="polite">
           <p className="dark-output-line">
             <span className="dark-output-arrow">{'>'}</span> Initializing ceremony sequence...

@@ -784,6 +784,22 @@ figcaption,
   line-height: 1.8;
 }
 
+.dark-typing-block {
+  min-height: 1.2em;
+}
+
+.dark-typing-line {
+  margin: 0;
+}
+
+.dark-output-line.dark-typing-line {
+  margin: 0;
+}
+
+.dark-log-message {
+  display: inline;
+}
+
 .dark-story-caption {
   font-family: var(--font-caption);
   font-size: 0.64rem;
