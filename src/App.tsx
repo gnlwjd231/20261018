@@ -62,10 +62,9 @@ function App() {
 function LightModePage() {
   return (
     <>
-    <figure className="editorial-cover">
+    <div className="editorial-cover">
       <img src={lightPhoto} alt="웨딩 사진" />
-      <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
-    </figure>
+    </div>
     <section className="light-page" aria-label="Light mode invitation">
       <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
 
