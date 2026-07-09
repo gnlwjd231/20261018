@@ -35,7 +35,7 @@ export const PARENTS: ContactGroup[] = [
   {
     side: '신부측',
     members: [
-      { role: '아버지', name: '박호준', phone: '010-3873-6243' },
+      { role: '아버지', name: '박호준', phone: '010-7190-3450' },
     ],
   },
 ]
