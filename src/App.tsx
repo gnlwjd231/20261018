@@ -69,25 +69,25 @@ function LightModePage() {
         <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
       </figure>
       <GradualBlur preset="page-header" strength={1.5} opacity={0.6} />
+      <section className="light-page" aria-label="Light mode invitation">
+        <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
+
+        <div className="editorial-copy">
+          <p className="light-caption">A quiet beginning</p>
+          <BlurText text="The Beginning" className="light-title" delay={80} />
+          <p className="light-body">
+            9년 동안 서로의 일상을 채워온 두 사람이,
+            <br />
+            이제 하나의 일상을 시작합니다.
+          </p>
+        </div>
+
+        <div className="event-strip">
+          <span>{weddingDate}</span>
+          <span>서울대학교 교수회관</span>
+        </div>
+      </section>
     </div>
-    <section className="light-page" aria-label="Light mode invitation">
-      <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
-
-      <div className="editorial-copy">
-        <p className="light-caption">A quiet beginning</p>
-        <BlurText text="The Beginning" className="light-title" delay={80} />
-        <p className="light-body">
-          9년 동안 서로의 일상을 채워온 두 사람이,
-          <br />
-          이제 하나의 일상을 시작합니다.
-        </p>
-      </div>
-
-      <div className="event-strip">
-        <span>{weddingDate}</span>
-        <span>서울대학교 교수회관</span>
-      </div>
-    </section>
 
     <LightStorySection />
     <LightInfoSection />

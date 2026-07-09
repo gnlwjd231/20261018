@@ -146,11 +146,7 @@ figcaption,
 }
 
 .light-page {
-  min-height: calc(var(--vh, 1vh) * 100);
   padding: 22px 20px 28px;
-  background:
-    linear-gradient(90deg, rgba(42, 42, 42, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(#FAF8F5, #EFE8DD);
 }
 
 .light-kicker,
@@ -176,6 +172,44 @@ figcaption,
 .editorial-cover-wrap {
   position: relative;
   padding: 20px 20px 0;
+}
+
+.editorial-cover-wrap .light-page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  padding: 24px 18px;
+  background: none;
+  min-height: 0;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+.editorial-cover-wrap .light-page > * {
+  pointer-events: auto;
+}
+
+.editorial-cover-wrap .light-page .light-kicker {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.editorial-cover-wrap .editorial-copy {
+  position: relative;
+  margin-top: 0;
+  padding: 0;
+}
+
+.editorial-cover-wrap .light-body {
+  display: none;
+}
+
+.editorial-cover-wrap .event-strip {
+  margin-top: 8px;
 }
 
 .editorial-cover {
@@ -248,8 +282,7 @@ figcaption,
 
 .dark-page {
   position: relative;
-  min-height: calc(var(--vh, 1vh) * 100);
-  padding: 16px;
+  padding: 12px;
   background:
     linear-gradient(rgba(0, 255, 102, 0.055) 1px, transparent 1px) 0 0 / 100% 5px,
     radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.16), transparent 46%),
@@ -273,7 +306,6 @@ figcaption,
 }
 
 .terminal-frame {
-  min-height: calc((var(--vh, 1vh) * 100) - 32px);
   border: 1px solid rgba(0, 255, 102, 0.46);
   background: rgba(8, 10, 16, 0.9);
   box-shadow:
@@ -812,14 +844,14 @@ figcaption,
    ============================================================ */
 
 .light-info-wrapper {
-  padding: 0 20px 64px;
+  padding: 0 20px 32px;
 }
 
 .light-section-divider {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 48px 0 32px;
+  margin: 28px 0 20px;
 }
 
 .light-section-divider::before,
@@ -840,7 +872,7 @@ figcaption,
 }
 
 .light-info-section {
-  padding: 32px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -1288,11 +1320,11 @@ figcaption,
    ============================================================ */
 
 .dark-info-wrapper {
-  padding: 0 16px 64px;
+  padding: 0 16px 32px;
 }
 
 .dark-info-block {
-  padding: 24px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border-color);
 }
 
