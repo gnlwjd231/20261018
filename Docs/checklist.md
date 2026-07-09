@@ -21,29 +21,29 @@
   - [x] 환경 변수 설정 및 첫 배포 테스트 (CI/CD 자동화 확인)
 
 ### 2단계: 핵심 기능 - 듀얼 모드 화면 전환 및 상태 관리
-- [ ] **모드 상태 관리 시스템 구현**
-  - [ ] React Context API 또는 전역 상태 관리로 `mode` (`light` / `dark`) 상태 구축
-  - [ ] `localStorage`를 연동하여 사용자의 마지막 선택 모드 저장 및 재방문 시 복원
-  - [ ] 예비 부부가 설정할 기본(Default) 모드 옵션 제공 기능 준비
-- [ ] **해/달 모드 전환 버튼 및 화면 스위칭 UI 구현**
-  - [ ] 화면 우측 상단 고정(Floating) 해/달 아이콘 버튼 컴포넌트 개발
-  - [ ] 동일 URL에서 `LightModePage` / `DarkModePage`를 전환하는 구조 설계
-  - [ ] 화면 전환 시 부드러운 디졸브/페이드 효과 적용
-- [ ] **모션 감소(prefer-reduced-motion) 대응**
-  - [ ] 사용자의 OS 애니메이션 비활성화 설정을 감지하여 CSS Transition 무시 처리
+- [x] **모드 상태 관리 시스템 구현**
+  - [x] React Context API 또는 전역 상태 관리로 `mode` (`light` / `dark`) 상태 구축
+  - [x] `localStorage`를 연동하여 사용자의 마지막 선택 모드 저장 및 재방문 시 복원
+  - [x] 예비 부부가 설정할 기본(Default) 모드 옵션 제공 기능 준비
+- [x] **해/달 모드 전환 버튼 및 화면 스위칭 UI 구현**
+  - [x] 화면 우측 상단 고정(Floating) 해/달 아이콘 버튼 컴포넌트 개발
+  - [x] 동일 URL에서 `LightModePage` / `DarkModePage`를 전환하는 구조 설계
+  - [x] 화면 전환 시 부드러운 디졸브/페이드 효과 적용
+- [x] **모션 감소(prefer-reduced-motion) 대응**
+  - [x] 사용자의 OS 애니메이션 비활성화 설정을 감지하여 CSS Transition 무시 처리
 
 ### 3단계: 스토리 섹션 구현 (모드별 개별화)
-- [ ] **라이트 모드 스토리 - Vintage Editorial**
-  - [ ] `Instrument Serif` 헤드라인, `Pretendard` 본문, `IBM Plex Mono` 캡션 적용
-  - [ ] 감성적이고 정돈된 텍스트 작성 (드럼 레슨 만남, 9년 연애 스토리)
-  - [ ] 이미지/동영상 갤러리 컴포넌트 개발 (밝은 톤 필터 및 레이아웃)
-- [ ] **다크 모드 스토리 - Retro Computing**
-  - [ ] `IBM Plex Mono` 헤드라인, `Geist Mono` 또는 `IBM Plex Mono` 본문 적용
-  - [ ] 개발자 감성의 위트 있는 텍스트 작성
-  - [ ] 드럼 레슨 및 기계공학/PM 커플을 나타내는 ASCII 아트 그래픽 구현 및 삽입
-- [ ] **접근성(a11y) 최적화**
-  - [ ] 모든 이미지/비디오에 의미 있는 대체 텍스트(`alt`) 제공
-  - [ ] 비디오 요소의 자막(Captions) 또는 캡션 설명 텍스트 적용
+- [x] **라이트 모드 스토리 - Vintage Editorial**
+  - [x] `Instrument Serif` 헤드라인, `Pretendard` 본문, `IBM Plex Mono` 캡션 적용
+  - [x] 감성적이고 정돈된 텍스트 작성 (드럼 레슨 만남, 9년 연애 스토리)
+  - [x] 이미지/동영상 갤러리 컴포넌트 개발 (밝은 톤 필터 및 레이아웃)
+- [x] **다크 모드 스토리 - Retro Computing**
+  - [x] `IBM Plex Mono` 헤드라인, `Geist Mono` 또는 `IBM Plex Mono` 본문 적용
+  - [x] 개발자 감성의 위트 있는 텍스트 작성
+  - [x] 드럼 레슨 및 기계공학/PM 커플을 나타내는 ASCII 아트 그래픽 구현 및 삽입
+- [x] **접근성(a11y) 최적화**
+  - [x] 모든 이미지/비디오에 의미 있는 대체 텍스트(`alt`) 제공
+  - [x] 비디오 요소의 자막(Captions) 또는 캡션 설명 텍스트 적용
 
 ### 4단계: 핵심 예식 정보 및 외부 API 연동
 - [ ] **예식 일시 및 디데이(D-Day) 컴포넌트**

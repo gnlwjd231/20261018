@@ -106,6 +106,22 @@ figcaption,
   background: var(--bg-primary);
 }
 
+.mode-stage {
+  min-height: calc(var(--vh, 1vh) * 100);
+  animation: mode-dissolve-in 0.42s ease both;
+  transform-origin: center;
+}
+
+.invitation-switching .mode-stage {
+  opacity: 0.08;
+  filter: blur(12px);
+  transform: scale(0.985);
+  transition:
+    opacity 0.18s ease,
+    filter 0.18s ease,
+    transform 0.18s ease;
+}
+
 .mode-toggle {
   position: fixed;
   z-index: 20;
@@ -122,6 +138,11 @@ figcaption,
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   backdrop-filter: blur(14px);
+}
+
+.mode-toggle:disabled {
+  cursor: wait;
+  opacity: 0.7;
 }
 
 .light-page {
@@ -183,7 +204,7 @@ figcaption,
   position: relative;
   margin-top: -38px;
   padding: 24px 18px 18px 0;
-  background: linear-gradient(90deg, #FAF8F5 0%, rgba(250, 248, 245, 0.92) 82%, transparent 100%);
+  /* background: linear-gradient(90deg, #FAF8F5 0%, rgba(250, 248, 245, 0.92) 82%, transparent 100%); */
 }
 
 .light-caption,
@@ -304,7 +325,435 @@ figcaption,
   }
 }
 
-/* 모션 감소 설정 대응 */
+@keyframes mode-dissolve-in {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.012);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+
+
+/* ============================================================
+   3단계: 스토리 섹션 — 스크롤 등장 애니메이션
+   ============================================================ */
+
+@keyframes story-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.story-revealed {
+  animation: story-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   라이트 모드 스토리 섹션 — Vintage Editorial
+   ============================================================ */
+
+.light-story-section {
+  padding: 0 0 56px;
+}
+
+.light-story-header {
+  padding: 48px 20px 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.light-story-kicker {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-caption);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.light-story-headline {
+  font-family: var(--font-heading);
+  font-size: 3.6rem;
+  font-weight: 400;
+  line-height: 0.92;
+  color: #1E1A17;
+  margin-bottom: 18px;
+}
+
+.light-story-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.light-story-subhead {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  color: #5A5249;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.light-story-rule {
+  width: 42px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.55;
+}
+
+/* 에피소드 블록 */
+.light-story-episode {
+  padding: 36px 20px 0;
+}
+
+.light-episode-header {
+  margin-bottom: 16px;
+}
+
+.light-episode-number {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-caption);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.light-episode-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #26211E;
+}
+
+/* 스토리 이미지 */
+.light-story-figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 16px 0;
+  overflow: hidden;
+  border: 1px solid rgba(140, 123, 110, 0.36);
+  background: #EAE1D6;
+}
+
+.light-story-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.light-story-figure-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #E8DDD2 0%, #D4C5B4 40%, #C9BAA9 100%);
+}
+
+.light-story-figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  padding: 4px 7px;
+  background: rgba(250, 248, 245, 0.84);
+  font-family: var(--font-caption);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5A5249;
+}
+
+/* 에피소드 본문 텍스트 */
+.light-episode-copy {
+  padding-top: 4px;
+}
+
+.light-episode-body {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: #3F3B36;
+  margin: 0;
+}
+
+.light-episode-body + .light-episode-body {
+  margin-top: 2px;
+}
+
+/* 홀수 에피소드: 이미지 우측 오프셋 */
+.story-episode--right .light-story-figure {
+  margin-left: 24px;
+}
+
+/* 갤러리 스트립 */
+.light-gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 40px 20px 0;
+}
+
+.light-gallery-thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(140, 123, 110, 0.26);
+}
+
+.light-gallery-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.light-gallery-thumb:nth-child(1) .light-gallery-thumb-placeholder {
+  background: linear-gradient(135deg, #DDD4C8 0%, #C8BAA8 100%);
+}
+
+.light-gallery-thumb:nth-child(2) .light-gallery-thumb-placeholder {
+  background: linear-gradient(135deg, #C8C0B4 0%, #B8AFA5 100%);
+}
+
+.light-gallery-thumb:nth-child(3) .light-gallery-thumb-placeholder {
+  background: linear-gradient(135deg, #D8CEBC 0%, #C4B8A6 100%);
+}
+
+.light-gallery-thumb-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 6px;
+  background: rgba(250, 248, 245, 0.78);
+  font-family: var(--font-caption);
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: #5A5249;
+}
+
+/* ============================================================
+   다크 모드 스토리 섹션 — Retro Computing / Terminal
+   ============================================================ */
+
+.dark-story-section {
+  padding: 0 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dark-story-block {
+  border: 1px solid rgba(0, 255, 102, 0.28);
+  background: rgba(8, 10, 16, 0.7);
+  padding: 18px 16px;
+}
+
+.dark-story-boot {
+  border-color: rgba(0, 255, 102, 0.18);
+}
+
+.dark-story-prompt {
+  font-family: var(--font-caption);
+  font-size: 0.76rem;
+  color: #8892B0;
+  line-height: 1.8;
+}
+
+.dark-story-prompt--indent {
+  padding-left: 1.4rem;
+}
+
+.dark-prompt-caret {
+  color: #FF3366;
+  margin-right: 6px;
+}
+
+.dark-story-comment {
+  font-family: var(--font-caption);
+  font-size: 0.7rem;
+  color: rgba(136, 146, 176, 0.55);
+  line-height: 1.8;
+}
+
+.dark-story-caption {
+  font-family: var(--font-caption);
+  font-size: 0.64rem;
+  color: rgba(0, 255, 102, 0.45);
+  margin-top: 8px;
+  letter-spacing: 0.06em;
+}
+
+/* ASCII 아트 */
+.dark-ascii-art {
+  font-family: var(--font-caption);
+  font-size: 0.66rem;
+  line-height: 1.45;
+  color: #00FF66;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.35);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.dark-ascii-art--couple {
+  color: #FF3366;
+  text-shadow: 0 0 8px rgba(255, 51, 102, 0.35);
+}
+
+/* git log */
+.dark-git-log {
+  padding: 16px;
+}
+
+.dark-log-list {
+  list-style: none;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dark-log-entry {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px 8px;
+  align-items: baseline;
+}
+
+.dark-log-hash {
+  font-family: var(--font-caption);
+  font-size: 0.62rem;
+  color: #FF3366;
+  letter-spacing: 0.04em;
+}
+
+.dark-log-type {
+  font-family: var(--font-caption);
+  font-size: 0.6rem;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.dark-log-type--feat    { background: rgba(0, 255, 102, 0.15); color: #00FF66; }
+.dark-log-type--fix     { background: rgba(255, 200, 0, 0.12); color: #FFC800; }
+.dark-log-type--chore   { background: rgba(136, 146, 176, 0.15); color: #8892B0; }
+.dark-log-type--refactor { background: rgba(100, 200, 255, 0.12); color: #64C8FF; }
+.dark-log-type--merge   { background: rgba(255, 51, 102, 0.15); color: #FF3366; }
+
+.dark-log-message {
+  font-family: var(--font-caption);
+  font-size: 0.7rem;
+  color: #C8D0E4;
+  grid-column: 3;
+  grid-row: 1;
+  line-height: 1.5;
+}
+
+.dark-log-note {
+  font-family: var(--font-caption);
+  font-size: 0.62rem;
+  color: rgba(136, 146, 176, 0.6);
+  grid-column: 1 / -1;
+  grid-row: 2;
+  padding-left: 6px;
+  border-left: 2px solid rgba(0, 255, 102, 0.18);
+}
+
+.dark-log-year {
+  display: none;
+}
+
+/* system status */
+.dark-status-list {
+  list-style: none;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dark-status-item {
+  display: grid;
+  grid-template-columns: 120px auto 1fr;
+  gap: 6px;
+  font-family: var(--font-caption);
+  font-size: 0.7rem;
+  align-items: baseline;
+}
+
+.dark-status-label {
+  color: #FF3366;
+  letter-spacing: 0.06em;
+}
+
+.dark-status-sep {
+  color: rgba(0, 255, 102, 0.5);
+}
+
+.dark-status-value {
+  color: #C8D0E4;
+}
+
+/* 웨딩 실행 명령어 */
+.dark-story-output {
+  margin-top: 14px;
+  padding: 12px 10px;
+  border: 1px solid rgba(0, 255, 102, 0.18);
+  background: rgba(0, 255, 102, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dark-output-line {
+  font-family: var(--font-caption);
+  font-size: 0.7rem;
+  color: #8892B0;
+  line-height: 1.7;
+}
+
+.dark-output-arrow {
+  color: #00FF66;
+  margin-right: 6px;
+}
+
+.dark-output-ok {
+  color: #00FF66;
+}
+
+.dark-output-final {
+  margin-top: 4px;
+}
+
+.dark-output-success {
+  color: #00FF66;
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.6);
+  font-weight: 600;
+}
+
+/* ============================================================
+   모션 감소 설정 대응 (글로벌 + 스토리 섹션)
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-delay: 0s !important;
@@ -313,5 +762,23 @@ figcaption,
     transition-delay: 0s !important;
     transition-duration: 0s !important;
     scroll-behavior: auto !important;
+  }
+
+  .mode-stage,
+  .invitation-switching .mode-stage {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .story-hidden {
+    opacity: 1;
+    transform: none;
+  }
+
+  .story-revealed {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

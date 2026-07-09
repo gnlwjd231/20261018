@@ -3,49 +3,68 @@ import { useEffect, useState } from 'react'
 import lightPhoto from './assets/images/light/favorite.jpg'
 import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
+import { LightStorySection } from './components/story/LightStorySection'
+import { DarkStorySection } from './components/story/DarkStorySection'
 
 type Mode = 'light' | 'dark'
 
+const defaultMode: Mode = 'light'
+const modeStorageKey = 'wedding-mode'
 const weddingDate = '2026.10.18 SUN 11:00'
 
 function App() {
   const [mode, setMode] = useState<Mode>(() => {
-    const savedMode = localStorage.getItem('wedding-mode')
-    return savedMode === 'dark' ? 'dark' : 'light'
+    const savedMode = localStorage.getItem(modeStorageKey)
+    return savedMode === 'dark' || savedMode === 'light' ? savedMode : defaultMode
   })
+  const [isSwitching, setIsSwitching] = useState(false)
 
   useEffect(() => {
-    localStorage.setItem('wedding-mode', mode)
+    localStorage.setItem(modeStorageKey, mode)
     document.documentElement.dataset.theme = mode
   }, [mode])
 
   const nextMode = mode === 'light' ? 'dark' : 'light'
 
+  const handleModeToggle = () => {
+    if (isSwitching) return
+
+    setIsSwitching(true)
+    window.setTimeout(() => {
+      setMode(nextMode)
+      window.setTimeout(() => setIsSwitching(false), 260)
+    }, 180)
+  }
+
   return (
-    <main className={`invitation invitation-${mode}`}>
+    <main className={`invitation invitation-${mode}${isSwitching ? ' invitation-switching' : ''}`}>
       <button
         className="mode-toggle"
         type="button"
-        onClick={() => setMode(nextMode)}
+        onClick={handleModeToggle}
+        disabled={isSwitching}
         aria-label={`${nextMode} mode`}
         title={`${nextMode} mode`}
       >
         {mode === 'light' ? <Moon size={18} /> : <Sun size={18} />}
       </button>
 
-      {mode === 'light' ? <LightModePage /> : <DarkModePage />}
+      <div className="mode-stage" key={mode}>
+        {mode === 'light' ? <LightModePage /> : <DarkModePage />}
+      </div>
     </main>
   )
 }
 
 function LightModePage() {
   return (
+    <>
+    <figure className="editorial-cover">
+      <img src={lightPhoto} alt="웨딩 사진" />
+      <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
+    </figure>
     <section className="light-page" aria-label="Light mode invitation">
       <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
-      <figure className="editorial-cover">
-        <img src={lightPhoto} alt="웨딩 사진" />
-        <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
-      </figure>
 
       <div className="editorial-copy">
         <p className="light-caption">A quiet beginning</p>
@@ -62,6 +81,9 @@ function LightModePage() {
         <span>서울대학교 교수회관</span>
       </div>
     </section>
+
+    <LightStorySection />
+    </>
   )
 }
 
@@ -100,6 +122,8 @@ function DarkModePage() {
 +--------------------------------+`}
         </pre>
       </div>
+
+      <DarkStorySection />
     </section>
   )
 }
