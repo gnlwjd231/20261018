@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import lightPhoto from './assets/images/light/favorite.jpg'
 import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
-import ASCIIText from './components/ASCIIText'
 import Dither from './components/Dither'
 import GradualBlur from './components/GradualBlur'
 import { LightStorySection } from './components/story/LightStorySection'
@@ -119,16 +118,7 @@ function DarkModePage() {
         <div className="terminal-grid">
           <div className="terminal-copy">
             <p className="dark-caption">Chapter 02 / boot sequence</p>
-            <div className="dark-ascii-title-wrap">
-              <ASCIIText
-                text="BOOT_SEQUENCE"
-                asciiFontSize={6}
-                textFontSize={160}
-                textColor="#00FF66"
-                planeBaseHeight={6}
-                enableWaves={true}
-              />
-            </div>
+            <BlurText text="BOOT_SEQUENCE" className="dark-title" delay={38} animateBy="letters" />
             <p className="dark-body">
               &gt; loading 9 years of logs...
               <br />

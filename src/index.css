@@ -272,13 +272,6 @@ figcaption,
   z-index: 1;
 }
 
-.dark-ascii-title-wrap {
-  position: relative;
-  width: 100%;
-  height: 120px;
-  margin-bottom: 8px;
-}
-
 .terminal-frame {
   min-height: calc((var(--vh, 1vh) * 100) - 32px);
   border: 1px solid rgba(0, 255, 102, 0.46);
