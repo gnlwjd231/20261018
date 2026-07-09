@@ -5,6 +5,8 @@ import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
 import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
+import { LightInfoSection } from './components/info/LightInfoSection'
+import { DarkInfoSection } from './components/info/DarkInfoSection'
 
 type Mode = 'light' | 'dark'
 
@@ -83,6 +85,7 @@ function LightModePage() {
     </section>
 
     <LightStorySection />
+    <LightInfoSection />
     </>
   )
 }
@@ -124,6 +127,7 @@ function DarkModePage() {
       </div>
 
       <DarkStorySection />
+      <DarkInfoSection />
     </section>
   )
 }
