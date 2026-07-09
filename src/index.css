@@ -150,7 +150,7 @@ figcaption,
 }
 
 .editorial-cover-wrap .light-caption {
-  color: rgba(245, 240, 234, 0.75);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .light-kicker,
@@ -166,7 +166,16 @@ figcaption,
 }
 
 .editorial-cover-wrap .light-kicker {
-  color: rgba(245, 240, 234, 0.7);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.editorial-cover-wrap .event-strip {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
 }
 
 .light-kicker {
@@ -218,7 +227,7 @@ figcaption,
   position: absolute;
   inset: 0;
   padding: 32px 24px 64px;
-  background: none;
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.55) 100%);
   min-height: 0;
   justify-content: flex-end;
   pointer-events: none;
@@ -269,8 +278,8 @@ figcaption,
 }
 
 .editorial-cover-wrap .light-title {
-  color: #F5F0EA;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .light-title {
