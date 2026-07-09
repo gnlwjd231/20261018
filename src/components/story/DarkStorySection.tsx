@@ -136,6 +136,32 @@ export function DarkStorySection() {
         <p className="dark-story-caption">{'// 2015 — where it all began'}</p>
       </DarkBlock>
 
+      {/* 사진: 신랑 드럼 */}
+      <DarkBlock>
+        <figure className="dark-story-figure" aria-label="신랑이 드럼을 치고 있는 모습">
+          <img
+            className="dark-story-image"
+            src="/src/assets/images/dark/DSC03496.jpg"
+            alt="드럼을 치고 있는 신랑"
+            loading="lazy"
+          />
+          <figcaption className="dark-story-caption">{'// drummer.exe — running since 2015'}</figcaption>
+        </figure>
+      </DarkBlock>
+
+      {/* 사진: 신부 템버린 */}
+      <DarkBlock>
+        <figure className="dark-story-figure" aria-label="신부가 템버린을 흔들고 있는 모습">
+          <img
+            className="dark-story-image"
+            src="/src/assets/images/dark/DSC03561.jpg"
+            alt="템버린을 신나게 흔드는 신부"
+            loading="lazy"
+          />
+          <figcaption className="dark-story-caption">{'// tambourine.sh — maximum energy'}</figcaption>
+        </figure>
+      </DarkBlock>
+
       {/* git log */}
       <DarkBlock className="dark-git-log">
         <p className="dark-story-prompt">
@@ -160,6 +186,19 @@ export function DarkStorySection() {
         </ul>
       </DarkBlock>
 
+      {/* 사진 1 — CRT 스타일 */}
+      <DarkBlock>
+        <figure className="dark-story-figure" aria-label="함께한 시간들">
+          <img
+            className="dark-story-image"
+            src="/src/assets/images/dark/DSC03698.jpg"
+            alt="함께한 시간들"
+            loading="lazy"
+          />
+          <figcaption className="dark-story-caption">{'// 2015–2026 — runtime: 9 years'}</figcaption>
+        </figure>
+      </DarkBlock>
+
       {/* system status */}
       <DarkBlock>
         <p className="dark-story-prompt">
@@ -174,6 +213,19 @@ export function DarkStorySection() {
             </li>
           ))}
         </ul>
+      </DarkBlock>
+
+      {/* 사진 2 — CRT 스타일 */}
+      <DarkBlock>
+        <figure className="dark-story-figure" aria-label="드럼과 함께">
+          <img
+            className="dark-story-image"
+            src="/src/assets/images/dark/DSC03845-2.jpg"
+            alt="드럼과 함께한 순간"
+            loading="lazy"
+          />
+          <figcaption className="dark-story-caption">{'// drum.exe — still running after 9 years'}</figcaption>
+        </figure>
       </DarkBlock>
 
       {/* 커플 ASCII 아트 */}

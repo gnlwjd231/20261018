@@ -100,3 +100,22 @@ React Bits를 보조 애니메이션 라이브러리로 사용합니다.
 ```bash
 npx shadcn@latest add https://reactbits.dev/r/BlurText-TS-CSS.json --yes
 ```
+
+--
+
+Never use
+
+- Heart icons
+- Glitter
+- Sparkles
+- Cartoon illustrations
+
+Always use
+
+- Typography first
+- Photography first
+- Motion with purpose
+
+
+--
+

@@ -19,6 +19,7 @@ const episodes: StoryEpisode[] = [
       '레슨실 창문으로 들어오던 오후 햇살과,',
       '낯선 사람의 눈이 처음으로 마주쳤습니다.',
     ],
+    imageSrc: '/src/assets/images/light/DSC02075.jpg',
     imageAlt: '드럼 레슨, 첫 만남의 순간을 담은 사진',
   },
   {
@@ -31,6 +32,7 @@ const episodes: StoryEpisode[] = [
       '같은 음악을 듣고, 같은 밥을 먹고,',
       '서로의 일상이 되어갔습니다.',
     ],
+    imageSrc: '/src/assets/images/light/DSC02481.jpg',
     imageAlt: '함께한 9년의 시간을 담은 사진',
   },
   {
@@ -43,6 +45,7 @@ const episodes: StoryEpisode[] = [
       '그저 평범한 하루였는데,',
       '이 사람과 평생 평범하고 싶다는 생각이 들었습니다.',
     ],
+    imageSrc: '/src/assets/images/light/DSC02774.jpg',
     imageAlt: '결혼을 결심한 평범하지만 소중한 날의 사진',
   },
 ]
@@ -115,6 +118,12 @@ function EpisodeBlock({ episode, index }: { episode: StoryEpisode; index: number
   )
 }
 
+const galleryImages = [
+  { src: '/src/assets/images/light/DSC01974.jpg', alt: '갤러리 사진 01' },
+  { src: '/src/assets/images/light/DSC01640.jpg', alt: '갤러리 사진 02' },
+  { src: '/src/assets/images/light/DSC02529.jpg', alt: '갤러리 사진 03' },
+]
+
 export function LightStorySection() {
   return (
     <section className="light-story-section" aria-label="우리의 이야기">
@@ -141,15 +150,16 @@ export function LightStorySection() {
 
       {/* 갤러리 - 사진이 추가되면 표시 */}
       <div className="light-gallery-strip" aria-label="갤러리">
-        {[1, 2, 3].map((n) => (
-          <figure key={n} className="light-gallery-thumb" aria-label={`갤러리 사진 ${n}`}>
-            <div
-              className="light-gallery-thumb-placeholder"
-              role="img"
-              aria-label={`갤러리 사진 ${n}`}
+        {galleryImages.map((img, i) => (
+          <figure key={i} className="light-gallery-thumb" aria-label={img.alt}>
+            <img
+              className="light-gallery-thumb-img"
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
             />
             <figcaption className="light-gallery-thumb-caption">
-              Photo {String(n).padStart(2, '0')}
+              Photo {String(i + 1).padStart(2, '0')}
             </figcaption>
           </figure>
         ))}

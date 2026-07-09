@@ -18,3 +18,22 @@
 신부 아버지 : 박호준
 전화번호 : 010-7190-3450
 계좌번호 : -
+
+---
+
+신부
+- Frontend Engineer
+- Loves editorial design
+- Minimalism
+- Vintage aesthetics
+
+오기승
+- PhD in Mechanical Engineering
+- Drummer
+
+
+Story
+- Met through drum lessons.
+- Together for nine years.
+- Marriage is the beginning of a family.
+
