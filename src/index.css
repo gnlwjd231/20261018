@@ -149,10 +149,6 @@ figcaption,
   padding: 40px 20px 32px;
 }
 
-.editorial-cover-wrap .light-caption {
-  color: rgba(255, 255, 255, 0.85);
-}
-
 .light-kicker,
 .light-caption,
 .editorial-cover figcaption,
@@ -226,12 +222,60 @@ figcaption,
   flex-direction: column;
   position: absolute;
   inset: 0;
-  padding: 32px 24px 64px;
-  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.55) 100%);
+  padding: 28px 24px;
+  background: none;
   min-height: 0;
-  justify-content: flex-end;
+  justify-content: flex-start;
   pointer-events: none;
   z-index: 1;
+}
+
+.editorial-cover-wrap .light-page .light-kicker {
+  display: inline-block;
+  padding: 6px 10px;
+  background: rgba(250, 248, 245, 0.88);
+  color: var(--accent);
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+  pointer-events: auto;
+}
+
+.editorial-cover-wrap .editorial-copy {
+  position: relative;
+  margin-top: 0;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.editorial-cover-wrap .light-caption {
+  display: inline-block;
+  padding: 4px 8px;
+  background: rgba(250, 248, 245, 0.85);
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.editorial-cover-wrap .light-title {
+  color: #26211E;
+  text-shadow: none;
+  pointer-events: auto;
+}
+
+.editorial-cover-wrap .light-body {
+  display: none;
+}
+
+.editorial-cover-wrap .event-strip {
+  display: inline-block;
+  padding: 4px 8px;
+  margin-top: 6px;
+  background: rgba(250, 248, 245, 0.82);
+  color: var(--text-secondary);
+  font-family: var(--font-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  pointer-events: auto;
 }
 
 .editorial-cover-wrap .light-page > * {
@@ -242,6 +286,15 @@ figcaption,
   color: var(--accent);
   font-size: 0.7rem;
   margin-bottom: 10px;
+}
+
+.editorial-cover-wrap .event-strip {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
 }
 
 .editorial-cover-wrap .editorial-copy {
@@ -278,8 +331,8 @@ figcaption,
 }
 
 .editorial-cover-wrap .light-title {
-  color: #FFFFFF;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  color: #26211E;
+  text-shadow: none;
 }
 
 .light-title {
