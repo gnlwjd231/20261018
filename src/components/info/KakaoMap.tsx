@@ -154,20 +154,15 @@ export function KakaoMap({ mode }: KakaoMapProps) {
   )
 
   // API 키 없거나 로드 실패 시 fallback
-  if (!KAKAO_KEY || error) {
-    return (
-      <div className={`map-fallback map-fallback--${mode}`} aria-label="예식장 위치 정보">
-        <div className={`map-fallback-card map-fallback-card--${mode}`}>
-          <p className={`map-venue-name map-venue-name--${mode}`}>{VENUE.name}</p>
-          {addressLine}
-        </div>
-        {mapLinks}
-        {toast && <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>}
+  const mapContent = !KAKAO_KEY || error ? (
+    <div className={`map-fallback map-fallback--${mode}`} aria-label="예식장 위치 정보">
+      <div className={`map-fallback-card map-fallback-card--${mode}`}>
+        <p className={`map-venue-name map-venue-name--${mode}`}>{VENUE.name}</p>
+        {addressLine}
       </div>
-    )
-  }
-
-  return (
+      {mapLinks}
+    </div>
+  ) : (
     <div className={`map-container map-container--${mode}`} aria-label="예식장 카카오맵">
       <div
         ref={mapRef}
@@ -181,7 +176,13 @@ export function KakaoMap({ mode }: KakaoMapProps) {
         {addressLine}
       </div>
       {mapLinks}
-      {toast && <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>}
     </div>
+  )
+
+  return (
+    <>
+      {mapContent}
+      {toast && <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>}
+    </>
   )
 }
