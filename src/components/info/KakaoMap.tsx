@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Copy, Check } from 'lucide-react'
 import { VENUE, MAP_LINKS } from '@/data/weddingInfo'
 
 const KAKAO_KEY = import.meta.env.VITE_KAKAO_MAP_KEY as string | undefined
@@ -48,6 +49,31 @@ export function KakaoMap({ mode }: KakaoMapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(VENUE.address)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // fallback
+    }
+  }
+
+  const addressLine = (
+    <div className={`map-address-row map-address-row--${mode}`}>
+      <p className={`map-venue-address map-venue-address--${mode}`}>{VENUE.address}</p>
+      <button
+        type="button"
+        className={`map-copy-btn map-copy-btn--${mode}`}
+        onClick={copyAddress}
+        aria-label="주소 복사"
+      >
+        {copied ? <Check size={13} /> : <Copy size={13} />}
+      </button>
+    </div>
+  )
 
   useEffect(() => {
     if (!KAKAO_KEY) return
@@ -113,7 +139,7 @@ export function KakaoMap({ mode }: KakaoMapProps) {
       <div className={`map-fallback map-fallback--${mode}`} aria-label="예식장 위치 정보">
         <div className={`map-fallback-card map-fallback-card--${mode}`}>
           <p className={`map-venue-name map-venue-name--${mode}`}>{VENUE.name}</p>
-          <p className={`map-venue-address map-venue-address--${mode}`}>{VENUE.address}</p>
+          {addressLine}
         </div>
         {mapLinks}
       </div>
@@ -131,7 +157,7 @@ export function KakaoMap({ mode }: KakaoMapProps) {
       />
       <div className={`map-venue-info map-venue-info--${mode}`}>
         <p className={`map-venue-name map-venue-name--${mode}`}>{VENUE.name}</p>
-        <p className={`map-venue-address map-venue-address--${mode}`}>{VENUE.address}</p>
+        {addressLine}
       </div>
       {mapLinks}
     </div>
