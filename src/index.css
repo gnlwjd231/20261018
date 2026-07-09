@@ -173,6 +173,11 @@ figcaption,
   line-height: 1.5;
 }
 
+.editorial-cover-wrap {
+  position: relative;
+  padding: 20px 20px 0;
+}
+
 .editorial-cover {
   position: relative;
   aspect-ratio: 3 / 4;
@@ -242,6 +247,7 @@ figcaption,
 }
 
 .dark-page {
+  position: relative;
   min-height: calc(var(--vh, 1vh) * 100);
   padding: 16px;
   background:
@@ -249,6 +255,28 @@ figcaption,
     radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.16), transparent 46%),
     #0D0E15;
   color: #00FF66;
+}
+
+.dark-dither-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.dark-page .terminal-frame,
+.dark-page .dark-story-section,
+.dark-page .dark-info-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.dark-ascii-title-wrap {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 8px;
 }
 
 .terminal-frame {

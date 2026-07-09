@@ -11,11 +11,16 @@
     "check:supabase": "node --env-file=.env scripts/check-supabase.mjs"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/postprocessing": "^3.0.4",
     "@supabase/supabase-js": "^2.110.1",
+    "gsap": "^3.15.0",
     "lucide-react": "^1.23.0",
     "motion": "^12.42.2",
+    "postprocessing": "^6.39.2",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

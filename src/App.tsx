@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import lightPhoto from './assets/images/light/favorite.jpg'
 import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
+import ASCIIText from './components/ASCIIText'
+import Dither from './components/Dither'
+import GradualBlur from './components/GradualBlur'
 import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
 import { LightInfoSection } from './components/info/LightInfoSection'
@@ -61,10 +64,13 @@ function App() {
 function LightModePage() {
   return (
     <>
-    <figure className="editorial-cover">
-      <img src={lightPhoto} alt="웨딩 사진" />
-      <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
-    </figure>
+    <div className="editorial-cover-wrap">
+      <figure className="editorial-cover">
+        <img src={lightPhoto} alt="웨딩 사진" />
+        <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
+      </figure>
+      <GradualBlur preset="page-header" strength={1.5} opacity={0.6} />
+    </div>
     <section className="light-page" aria-label="Light mode invitation">
       <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
 
@@ -93,6 +99,17 @@ function LightModePage() {
 function DarkModePage() {
   return (
     <section className="dark-page" aria-label="Dark mode invitation">
+      <div className="dark-dither-bg">
+        <Dither
+          waveSpeed={0.03}
+          waveFrequency={2.5}
+          waveAmplitude={0.2}
+          waveColor={[0.05, 0.9, 0.3]}
+          colorNum={3}
+          pixelSize={3}
+          enableMouseInteraction={true}
+        />
+      </div>
       <div className="terminal-frame">
         <div className="terminal-bar">
           <span>guest@wedding:~</span>
@@ -102,7 +119,16 @@ function DarkModePage() {
         <div className="terminal-grid">
           <div className="terminal-copy">
             <p className="dark-caption">Chapter 02 / boot sequence</p>
-            <BlurText text="BOOT_SEQUENCE" className="dark-title" delay={38} animateBy="letters" />
+            <div className="dark-ascii-title-wrap">
+              <ASCIIText
+                text="BOOT_SEQUENCE"
+                asciiFontSize={6}
+                textFontSize={160}
+                textColor="#00FF66"
+                planeBaseHeight={6}
+                enableWaves={true}
+              />
+            </div>
             <p className="dark-body">
               &gt; loading 9 years of logs...
               <br />
