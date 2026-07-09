@@ -113,7 +113,7 @@ function handleIcs(e: React.MouseEvent<HTMLAnchorElement>) {
     'BEGIN:VEVENT',
     'DTSTART:20261018T020000Z',
     'DTEND:20261018T040000Z',
-    'SUMMARY:오○○♥박○○ 결혼식',
+    'SUMMARY:오기승♥박휘정 결혼식',
     'DESCRIPTION:서울대학교 교수회관',
     'LOCATION:서울특별시 관악구 관악로 1 서울대학교 교수회관',
     'END:VEVENT',

@@ -34,7 +34,7 @@ export const MAP_LINKS = {
   /** 티맵 앱 실행 */
   tmap: `tmap://search?name=${encodeURIComponent('서울대학교 교수회관')}`,
   /** 구글 캘린더 이벤트 추가 */
-  googleCalendar: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('오○○♥박○○ 결혼식')}&dates=20261018T020000Z/20261018T040000Z&details=${encodeURIComponent('서울대학교 교수회관')}&location=${encodeURIComponent('서울특별시 관악구 관악로 1 서울대학교 교수회관')}`,
+  googleCalendar: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('오기승♥박휘정 결혼식')}&dates=20261018T020000Z/20261018T040000Z&details=${encodeURIComponent('서울대학교 교수회관')}&location=${encodeURIComponent('서울특별시 관악구 관악로 1 서울대학교 교수회관')}`,
 } as const
 
 /** 교통편 정보 */
