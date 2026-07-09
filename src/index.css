@@ -782,3 +782,657 @@ figcaption,
     transform: none;
   }
 }
+
+/* ============================================================
+   4단계: 예식 정보 섹션 — Light Info
+   ============================================================ */
+
+.light-info-wrapper {
+  padding: 0 20px 64px;
+}
+
+.light-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 32px;
+}
+
+.light-section-divider::before,
+.light-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.light-divider-label {
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.light-info-section {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.light-info-section:last-of-type {
+  border-bottom: none;
+}
+
+.light-info-heading {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+/* --- Light D-Day --- */
+
+.light-dday {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.light-dday-label {
+  display: block;
+  font-family: var(--font-caption);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.light-dday-display {
+  margin-bottom: 8px;
+}
+
+.light-dday-number {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.light-dday-date {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.light-dday-msg {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+}
+
+/* --- Calendar Links (light) --- */
+
+.light-dday .dday-calendar-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.light-cal-link {
+  display: inline-block;
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.light-cal-link:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* --- Light Kakao Map --- */
+
+.map-container--light {
+  margin-bottom: 16px;
+}
+
+.kakao-map {
+  width: 100%;
+  height: 240px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.map-venue-info--light {
+  padding: 12px 0 4px;
+}
+
+.map-venue-name--light {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.map-venue-address--light {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Map app links (shared) */
+
+.map-app-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.map-app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.map-app-btn--light {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.map-app-btn--light:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* --- Map fallback (light) --- */
+
+.map-fallback--light {
+  padding: 20px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.map-fallback-card--light {
+  margin-bottom: 12px;
+}
+
+/* --- Light Contacts --- */
+
+.contacts-section--light {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contacts-group--light {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contacts-group-title--light {
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.contact-card--light {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-role--light {
+  font-family: var(--font-caption);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.contact-name--light {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.contact-phone--light {
+  font-family: var(--font-caption);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.contact-phone--unknown {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  font-family: var(--font-caption);
+  font-size: 11px;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-btn--light {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.contact-btn--light:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* --- Light Transport --- */
+
+.light-transport-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.light-transport-header {
+  margin-bottom: 4px;
+}
+
+.light-story-kicker {
+  display: block;
+  font-family: var(--font-caption);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.light-transport-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.light-transport-block {
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.light-transport-block-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.light-transport-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.light-transport-navi {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.light-transport-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.light-transport-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.light-transport-step::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-family: var(--font-caption);
+  font-size: 10px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+}
+
+.light-transport-steps {
+  counter-reset: step-counter;
+}
+
+.light-transport-step--warn {
+  color: var(--accent-hover);
+  font-weight: 500;
+}
+
+.light-warn-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   4단계: 예식 정보 섹션 — Dark Info
+   ============================================================ */
+
+.dark-info-wrapper {
+  padding: 0 16px 64px;
+}
+
+.dark-info-block {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dark-info-block:last-of-type {
+  border-bottom: none;
+}
+
+/* --- Dark D-Day --- */
+
+.dark-dday {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.dark-dday-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0;
+}
+
+.dark-dday-number {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.dark-dday-date {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.dark-dday-msg {
+  font-family: var(--font-caption);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+}
+
+/* --- Calendar Links (dark) --- */
+
+.dark-dday .dday-calendar-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.dark-cal-link {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.dark-cal-link:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* --- Dark Map --- */
+
+.map-container--dark {
+  margin-bottom: 12px;
+}
+
+.map-container--dark .kakao-map {
+  filter: invert(0.9) hue-rotate(180deg);
+}
+
+.map-venue-info--dark {
+  text-align: center;
+  padding: 10px 0 4px;
+}
+
+.map-venue-name--dark {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 0 0 2px;
+}
+
+.map-venue-address--dark {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.map-app-btn--dark {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-heading);
+}
+
+.map-app-btn--dark:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+}
+
+/* --- Map fallback (dark) --- */
+
+.map-fallback--dark {
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.map-fallback-card--dark {
+  margin-bottom: 12px;
+}
+
+/* --- Dark Contacts --- */
+
+.contacts-section--dark {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contacts-group--dark {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contacts-group-title--dark {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.contact-card--dark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+}
+
+.contact-role--dark {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  text-transform: lowercase;
+  color: var(--text-secondary);
+}
+
+.contact-name--dark {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.contact-phone--dark {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.contact-btn--dark {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-heading);
+  font-size: 10px;
+}
+
+.contact-btn--dark:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+}
+
+/* --- Dark Transport --- */
+
+.dark-transport-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dark-transport-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dark-transport-step {
+  display: flex;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.dark-step-num {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.dark-step-text {
+  flex: 1;
+}
+
+.dark-transport-step--warn {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.dark-transport-car {
+  margin-top: 4px;
+}
+
+.dark-navi-keyword {
+  color: var(--accent);
+}
+
+.dark-story-prompt {
+  margin: 0 0 8px;
+}
+
+.dark-prompt-caret {
+  color: var(--accent);
+}
+
+.dark-story-comment {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 0 0 4px;
+}
