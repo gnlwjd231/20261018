@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Copy, Check } from 'lucide-react'
 import { VENUE, MAP_LINKS } from '@/data/weddingInfo'
 
@@ -182,7 +183,10 @@ export function KakaoMap({ mode }: KakaoMapProps) {
   return (
     <>
       {mapContent}
-      {toast && <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>}
+      {toast && createPortal(
+        <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>,
+        document.body,
+      )}
     </>
   )
 }
