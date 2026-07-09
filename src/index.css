@@ -1,0 +1,70 @@
+/* CSS 변수를 이용한 글로벌 테마 정의 */
+:root {
+  /* Vintage Editorial (Light Mode - 기본) */
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #F3EFEA;
+  --text-primary: #2A2A2A;
+  --text-secondary: #5A5A5A;
+  --accent: #8C7B6E;
+  --accent-hover: #736458;
+  --border-color: #E2DDD5;
+  --font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --toast-bg: rgba(42, 42, 42, 0.9);
+  --toast-text: #FAF8F5;
+  --button-radius: 4px;
+}
+
+[data-theme='dark'] {
+  /* Retro Computing (Dark Mode) */
+  --bg-primary: #0D0E15;
+  --bg-secondary: #161824;
+  --text-primary: #00FF66; /* Terminal Green */
+  --text-secondary: #8892B0; /* Cool Gray */
+  --accent: #FF3366; /* Cyberpunk Pink */
+  --accent-hover: #E02253;
+  --border-color: #2E3440;
+  --font-family: 'Fira Code', 'JetBrains Mono', 'D2Coding', monospace;
+  --toast-bg: rgba(0, 255, 102, 0.15);
+  --toast-text: #00FF66;
+  --button-radius: 0px; /* 각진 레트로 스타일 */
+}
+
+/* 기본 브라우저 스타일 리셋 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  min-height: 100%;
+}
+
+/* 모바일 뷰포트 교정 단위 */
+:root {
+  --vh: 1vh;
+}
+
+body {
+  width: 100%;
+  max-width: 480px; /* 모바일 타겟이므로 최대 가로폭 제한 */
+  margin: 0 auto;
+  min-height: calc(var(--vh, 1vh) * 100);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* 모션 감소 설정 대응 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
