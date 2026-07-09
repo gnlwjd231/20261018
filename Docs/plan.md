@@ -1,6 +1,6 @@
 # 개성 맞춤형 듀얼 모드 모바일 청첩장 상세 구현 계획서
 
-본 문서는 **개성 맞춤형 듀얼 모드 모바일 청첩장**의 아키텍처, 기술 스택, 데이터베이스 모델링 및 UI/UX 상세 구현 전략을 담은 기획서입니다.
+본 문서는 **개성 맞춤형 듀얼 모드 모바일 청첩장**의 아키텍처, 기술 스택, 데이터베이스 모델링 및 기능 구현 전략을 담은 기획서입니다.
 
 ---
 
@@ -22,7 +22,7 @@ graph TD
 | 구분 | 기술 스택 | 선정 이유 |
 | :--- | :--- | :--- |
 | **프레임워크** | React 18 (Vite, TypeScript) | 컴포넌트 기반 구조로 듀얼 모드 UI 재사용성이 뛰어나며, 빠른 번들링과 HMR 지원으로 효율적인 프론트엔드 개발이 가능합니다. |
-| **스타일링** | Vanilla CSS (CSS Modules) | 프레임워크나 외부 CSS 라이브러리의 무거운 의존성을 배제하고, Vintage Editorial과 Retro Computing이라는 두 상반된 테마의 정교한 타이포그래피 및 인터랙션을 자유롭게 제어하기 위함입니다. |
+| **스타일링** | Vanilla CSS (CSS Modules) | 프레임워크나 외부 CSS 라이브러리의 무거운 의존성을 배제하고, 기능별 화면 표현을 세밀하게 제어하기 위함입니다. |
 | **백엔드/DB** | Supabase (PostgreSQL) | 방명록 작성/조회, 관리자 로그인, 실시간(Realtime) 업데이트 및 접속자 통계 데이터 수집을 별도의 서버 구축 없이 효율적으로 처리하기 위함입니다. |
 | **배포 및 CI/CD** | Vercel | GitHub와 연동되어 푸시 시 자동 배포되며, HTTPS 적용, 글로벌 Edge Network 활용, 커스텀 도메인 매핑 및 SSL 인증서 발급이 무료이자 간편합니다. |
 
@@ -72,56 +72,17 @@ CREATE TABLE visit_logs (
 
 ---
 
-## 3. 듀얼 모드 UI/UX 상세 디자인 사양 (Dual-Mode Design Specs)
-
-### 3.1 Vintage Editorial 테마 (라이트 모드)
-가족, 친지, 직장 동료들을 대상으로 하는 차분하고 우아한 잡지 스타일의 레이아웃입니다.
-
-- **색상 팔레트**:
-  - Background: `#FAF8F5` (Matte Warm White / 미색 종이 질감)
-  - Text: `#2A2A2A` (Charcoal Black)
-  - Accent / Borders: `#8C7B6E` (Warm Taupe / 연한 브라운)
-- **타이포그래피**:
-  - 헤드라인: `Playfair Display` 또는 `Noto Serif KR` (Elegant Serif)
-  - 본문: `Nanum Myeongjo` 또는 `KoPub Batang` (Readable Serif)
-- **레이아웃 특징**:
-  - 충분한 여백(White Space)을 활용한 잡지 내지 느낌의 그리드 시스템
-  - 부드러운 이미지 페이드인 및 둥글고 차분한 보더 디자인
-  - 아날로그 옵셋 인쇄(Offset Printing) 스타일의 텍스처 백그라운드 적용
-
-### 3.2 Retro Computing 테마 (다크 모드)
-친구, 동료들을 위한 90년대 터미널 UI 및 ASCII 인터페이스 기반의 개성 넘치는 레이아웃입니다.
-
-- **색상 팔레트**:
-  - Background: `#0D0E15` (Deep Cyber Black)
-  - Accent Green: `#00FF66` (Neon Terminal Green / Matrix style)
-  - Border/Text: `#8892B0` (Cool Gray)
-  - Code/Warning: `#FF3366` (Cyber Punk Pink)
-- **타이포그래피**:
-  - 전체 서체: `Fira Code`, `JetBrains Mono` 또는 `D2Coding` (Monospace 폰트)
-- **레이아웃 특징**:
-  - 터미널 창(`[Terminal - Guestbook.sh]`) 형태의 컴포넌트 래퍼 적용
-  - ASCII 아트를 이용한 신랑/신부 프로필 이미지 표현 및 장식 요소
-  - 드럼 비트나 공학 기호, 코드 컴파일 프로세스 등의 모티프를 차용한 시각적 장치 구성
-
-### 3.3 테마 상태 관리 및 전환 인터랙션
+## 3. 모드 상태 관리 및 화면 전환
 - **상태 관리**:
   ```typescript
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
   ```
-  - 초기화 시: `localStorage.getItem('theme')` 확인 -> 없을 경우 시스템 기본 테마(`prefers-color-scheme`) 또는 예비 부부 지정 기본값 적용.
+  - 초기화 시: `localStorage.getItem('mode')` 확인 -> 없을 경우 시스템 기본 모드(`prefers-color-scheme`) 또는 예비 부부 지정 기본값 적용.
+  - 하나의 URL 안에서 공통 shell을 유지하고, `LightModePage`와 `DarkModePage`를 서로 다른 화면 컴포넌트로 전환합니다.
 - **전환 애니메이션**:
-  - 테마 전환 버튼 클릭 시, 화면 전체에 리플(Ripple) 또는 페이드 오버레이가 퍼져나가며 배경색과 텍스트 컬러가 자연스럽게 전환되도록 CSS `transition` 적용 (Duration: `0.4s ease`).
+  - 해/달 전환 버튼 클릭 시, 화면 전체에 리플(Ripple) 또는 페이드 오버레이가 퍼져나가며 두 화면 사이가 자연스럽게 교체되도록 CSS `transition` 적용 (Duration: `0.4s ease`).
   - 전환 중 중복 클릭을 방지하기 위해 `pointer-events: none`을 일시적으로 주입.
-- **모션 감소 지원**:
-  ```css
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
-  ```
+  - 색상만 바꾸는 테마 전환이 아니라, 레이아웃과 콘텐츠 밀도까지 다른 두 개의 페이지형 화면을 부드럽게 넘겨주는 구조로 설계합니다.
 
 ---
 
@@ -156,7 +117,7 @@ CREATE TABLE visit_logs (
 ### 4.4 하객 소통 (방명록)
 - **입력 폼**:
   - 작성자명, 내용, 그리고 나중에 개인이 수정/삭제할 때 사용할 간단한 비밀번호(암호) 입력란 제공.
-  - 듀얼 모드 전환 시, 방명록도 각각 Vintage 방명록(방명록 종이 책자 레이아웃) / Retro 방명록(Terminal 로그 스트림 레이아웃)으로 100% 렌더링 스타일 변경.
+  - 듀얼 모드 전환 시, 방명록도 각 모드에 맞는 전용 컴포넌트 구조로 렌더링합니다.
 - **실시간 바인딩**:
   - Supabase의 Realtime 기능을 활용하여 하객이 글을 작성하는 즉시, 화면을 새로고침하지 않아도 다른 하객들의 화면에 방명록 글이 실시간 렌더링되도록 구현.
 
@@ -176,7 +137,7 @@ CREATE TABLE visit_logs (
   - 비방용, 스팸성 글을 즉시 가리기 위한 `is_hidden` 토글 버튼 제공.
 - **접속 통계 시각화**:
   - `visit_logs` 테이블의 데이터를 가공하여 일별 방문자 수 추이 차트 구현 (라이트급 차트 라이브러리 사용 혹은 직접 SVG 바 차트로 경량화 구현).
-  - 방문객들의 브라우저 점유율, 모드별 선호 비율(라이트 모드 vs 다크 모드 전환 비율)을 원형 차트로 표현하여 하객들의 반응 및 모드 전환율 추적.
+  - 방문객들의 브라우저 점유율, 모드별 선호 비율(라이트 모드 vs 다크 모드 전환 비율)을 차트로 표현하여 하객들의 반응 및 모드 전환율 추적.
 
 ---
 
