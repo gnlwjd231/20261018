@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import lightPhoto from './assets/images/light/favorite.jpg'
 import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
+import LetterGlitch from './components/LetterGlitch'
 import Dither from './components/Dither'
 import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
@@ -113,7 +114,19 @@ function DarkModePage() {
         <div className="terminal-grid">
           <div className="terminal-copy">
             <p className="dark-caption">Chapter 02 / boot sequence</p>
-            <BlurText text="BOOT_SEQUENCE" className="dark-title" delay={38} animateBy="letters" />
+            <div className="dark-title-glitch-wrap">
+              <div className="dark-glitch-canvas">
+                <LetterGlitch
+                  glitchColors={['#00FF66', '#FF3366', '#0D0E15']}
+                  glitchSpeed={50}
+                  centerVignette={false}
+                  outerVignette={true}
+                  smooth={true}
+                  characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*()_+-=[]{}|;:',.<>?/~\`0123456789"
+                />
+              </div>
+              <BlurText text="BOOT_SEQUENCE" className="dark-title dark-title-overlay" delay={38} animateBy="letters" />
+            </div>
             <p className="dark-body">
               &gt; loading 9 years of logs...
               <br />

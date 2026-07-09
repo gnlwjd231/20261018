@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import TextType from '@/components/TextType'
+import DecryptedText from '@/components/DecryptedText'
 
 const DRUM_ASCII = `
       ||    ||
@@ -118,7 +119,16 @@ export function DarkStorySection() {
       {/* 섹션 헤더: 시스템 부팅 시퀀스 */}
       <DarkBlock className="dark-story-boot">
         <p className="dark-story-prompt">
-          <span className="dark-prompt-caret">$</span> cat /proc/our_story
+          <span className="dark-prompt-caret">$</span>{' '}
+          <DecryptedText
+            text="cat /proc/our_story"
+            speed={80}
+            maxIterations={6}
+            sequential
+            revealDirection="start"
+            className="dark-prompt-text"
+            animate="presence"
+          />
         </p>
         <div className="dark-typing-block">
           <TextType

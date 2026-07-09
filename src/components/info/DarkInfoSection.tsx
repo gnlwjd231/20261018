@@ -3,6 +3,7 @@ import { DdayCounter } from './DdayCounter'
 import { KakaoMap } from './KakaoMap'
 import { ContactsSection } from './ContactsSection'
 import { TransportSection } from './TransportSection'
+import { GuestbookSection } from '@/components/guestbook/GuestbookSection'
 
 export function DarkInfoSection() {
   return (
@@ -30,10 +31,13 @@ export function DarkInfoSection() {
 
       <AnimatedContent direction="vertical" distance={30} duration={0.6} threshold={0.15}>
         <div className="dark-info-block">
-          <p className="dark-story-prompt">
-            <span className="dark-prompt-caret">$</span> cat /etc/contacts
-          </p>
           <ContactsSection mode="dark" />
+        </div>
+      </AnimatedContent>
+
+      <AnimatedContent direction="vertical" distance={30} duration={0.6} threshold={0.15}>
+        <div className="dark-info-block" style={{ marginTop: 8 }}>
+          <GuestbookSection mode="dark" />
         </div>
       </AnimatedContent>
     </div>
