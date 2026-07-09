@@ -50,24 +50,44 @@ export function KakaoMap({ mode }: KakaoMapProps) {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [toast, setToast] = useState(false)
+
+  const showToast = () => {
+    setToast(true)
+    setTimeout(() => setToast(false), 2000)
+  }
 
   const copyAddress = async () => {
     try {
       await navigator.clipboard.writeText(VENUE.address)
       setCopied(true)
+      showToast()
       setTimeout(() => setCopied(false), 2000)
     } catch {
       // fallback
     }
   }
 
+  const handleAddressClick = () => {
+    copyAddress()
+  }
+
   const addressLine = (
     <div className={`map-address-row map-address-row--${mode}`}>
-      <p className={`map-venue-address map-venue-address--${mode}`}>{VENUE.address}</p>
+      <p
+        className={`map-venue-address map-venue-address--${mode}`}
+        onClick={handleAddressClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleAddressClick() }}
+        aria-label="주소 복사"
+      >
+        {VENUE.address}
+      </p>
       <button
         type="button"
         className={`map-copy-btn map-copy-btn--${mode}`}
-        onClick={copyAddress}
+        onClick={(e) => { e.stopPropagation(); copyAddress() }}
         aria-label="주소 복사"
       >
         {copied ? <Check size={13} /> : <Copy size={13} />}
@@ -142,6 +162,7 @@ export function KakaoMap({ mode }: KakaoMapProps) {
           {addressLine}
         </div>
         {mapLinks}
+        {toast && <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>}
       </div>
     )
   }
@@ -160,6 +181,7 @@ export function KakaoMap({ mode }: KakaoMapProps) {
         {addressLine}
       </div>
       {mapLinks}
+      {toast && <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>}
     </div>
   )
 }
