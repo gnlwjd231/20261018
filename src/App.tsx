@@ -65,11 +65,8 @@ function LightModePage() {
     <div className="editorial-cover-wrap">
       <figure className="editorial-cover">
         <img src={lightPhoto} alt="웨딩 사진" />
-        <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
       </figure>
       <section className="light-page" aria-label="Light mode invitation">
-        <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
-
         <div className="editorial-copy">
           <p className="light-caption">A quiet beginning</p>
           <BlurText text="The Beginning" className="light-title" delay={80} />
