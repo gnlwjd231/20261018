@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import ScrollStack, { ScrollStackItem } from '@/components/ScrollStack'
 
 interface StoryEpisode {
   number: string
@@ -148,21 +149,29 @@ export function LightStorySection() {
         <EpisodeBlock key={ep.number} episode={ep} index={i} />
       ))}
 
-      {/* 갤러리 - 사진이 추가되면 표시 */}
-      <div className="light-gallery-strip" aria-label="갤러리">
-        {galleryImages.map((img, i) => (
-          <figure key={i} className="light-gallery-thumb" aria-label={img.alt}>
-            <img
-              className="light-gallery-thumb-img"
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-            />
-            <figcaption className="light-gallery-thumb-caption">
-              Photo {String(i + 1).padStart(2, '0')}
-            </figcaption>
-          </figure>
-        ))}
+      {/* 갤러리 - ScrollStack */}
+      <div className="light-gallery-wrap">
+        <ScrollStack
+          useWindowScroll={true}
+          itemDistance={20}
+          itemScale={0.02}
+          itemStackDistance={20}
+          stackPosition="30%"
+          scaleEndPosition="15%"
+          baseScale={0.92}
+          blurAmount={1}
+        >
+          {galleryImages.map((img, i) => (
+            <ScrollStackItem key={i} itemClassName="light-gallery-card">
+              <figure className="light-gallery-figure" aria-label={img.alt}>
+                <img src={img.src} alt={img.alt} loading="lazy" />
+                <figcaption className="light-gallery-card-caption">
+                  Photo {String(i + 1).padStart(2, '0')}
+                </figcaption>
+              </figure>
+            </ScrollStackItem>
+          ))}
+        </ScrollStack>
       </div>
     </section>
   )

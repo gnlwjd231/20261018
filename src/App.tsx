@@ -5,6 +5,8 @@ import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
 import LetterGlitch from './components/LetterGlitch'
 import Dither from './components/Dither'
+import Noise from './components/Noise'
+import LightRays from './components/LightRays'
 import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
 import { LightInfoSection } from './components/info/LightInfoSection'
@@ -65,6 +67,18 @@ function LightModePage() {
     <>
     <div className="editorial-cover">
       <img src={lightPhoto} alt="웨딩 사진" />
+      <div className="cover-lightrays">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#d4c5b0"
+          raysSpeed={0.5}
+          lightSpread={0.6}
+          rayLength={1.5}
+          fadeDistance={0.8}
+          saturation={0.3}
+          followMouse={false}
+        />
+      </div>
     </div>
     <section className="light-page" aria-label="Light mode invitation">
       <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
@@ -104,6 +118,9 @@ function DarkModePage() {
           pixelSize={3}
           enableMouseInteraction={true}
         />
+      </div>
+      <div className="dark-noise-bg">
+        <Noise patternSize={300} patternAlpha={8} patternRefreshInterval={4} />
       </div>
       <div className="terminal-frame">
         <div className="terminal-bar">
