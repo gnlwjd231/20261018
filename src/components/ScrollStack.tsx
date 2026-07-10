@@ -49,7 +49,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const lenisRef = useRef<Lenis | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
   const lastTransformsRef = useRef(new Map<number, any>());
-  const isUpdatingRef = useRef(false);
 
   const calculateProgress = useCallback((scrollTop: number, start: number, end: number) => {
     if (scrollTop < start) return 0;
@@ -84,8 +83,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const getElementOffset = useCallback(
     (element: HTMLElement) => {
       if (useWindowScroll) {
-        const rect = element.getBoundingClientRect();
-        return rect.top + window.scrollY;
+        const scroller = scrollerRef.current!;
+        const scrollerRect = scroller.getBoundingClientRect();
+        return scrollerRect.top + window.scrollY + element.offsetTop;
       } else {
         return element.offsetTop;
       }
@@ -94,9 +94,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   );
 
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || isUpdatingRef.current) return;
-
-    isUpdatingRef.current = true;
+    if (!cardsRef.current.length) return;
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
@@ -183,8 +181,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         }
       }
     });
-
-    isUpdatingRef.current = false;
   }, [
     itemScale,
     itemStackDistance,
@@ -201,10 +197,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     getElementOffset
   ]);
 
-  const handleScroll = useCallback(() => {
-    updateCardTransforms();
-  }, [updateCardTransforms]);
-
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
       const lenis = new Lenis({
@@ -219,10 +211,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         syncTouchLerp: 0.075
       });
 
-      lenis.on('scroll', handleScroll);
-
       const raf = (time: number) => {
         lenis.raf(time);
+        updateCardTransforms();
         animationFrameRef.current = requestAnimationFrame(raf);
       };
       animationFrameRef.current = requestAnimationFrame(raf);
@@ -248,10 +239,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         syncTouchLerp: 0.075
       });
 
-      lenis.on('scroll', handleScroll);
-
       const raf = (time: number) => {
         lenis.raf(time);
+        updateCardTransforms();
         animationFrameRef.current = requestAnimationFrame(raf);
       };
       animationFrameRef.current = requestAnimationFrame(raf);
@@ -259,7 +249,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       lenisRef.current = lenis;
       return lenis;
     }
-  }, [handleScroll, useWindowScroll]);
+  }, [updateCardTransforms]);
 
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;
@@ -296,7 +286,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       stackCompletedRef.current = false;
       cardsRef.current = [];
       transformsCache.clear();
-      isUpdatingRef.current = false;
     };
   }, [
     itemDistance,

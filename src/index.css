@@ -148,9 +148,7 @@ figcaption,
 .light-page {
   min-height: calc(var(--vh, 1vh) * 100);
   padding: 48px 20px 32px;
-  background:
-    linear-gradient(90deg, rgba(42, 42, 42, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(#FAF8F5, #EFE8DD);
+  background: #FAF8F5;
 }
 
 .light-kicker,
@@ -275,28 +273,16 @@ figcaption,
   position: relative;
   min-height: 100dvh;
   padding: 0;
-  background:
-    linear-gradient(rgba(0, 255, 102, 0.055) 1px, transparent 1px) 0 0 / 100% 5px,
-    radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.16), transparent 46%),
-    #0D0E15;
+  background: #0D0E15;
   color: #00FF66;
 }
 
 .dark-dither-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
+  display: none;
 }
 
 .dark-noise-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  opacity: 0.4;
+  display: none;
 }
 
 .dark-page .terminal-frame,
@@ -307,16 +293,7 @@ figcaption,
 }
 
 .cover-lightrays {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.cover-lightrays .light-rays-container {
-  width: 100%;
-  height: 100%;
+  display: none;
 }
 
 .terminal-frame {
@@ -582,7 +559,7 @@ figcaption,
 /* 갤러리 - ScrollStack */
 
 .light-gallery-wrap {
-  padding: 40px 20px 80px;
+  padding: 40px 20px 300px;
 }
 
 .light-gallery-card {

@@ -156,9 +156,9 @@ export function LightStorySection() {
           itemDistance={20}
           itemScale={0.02}
           itemStackDistance={20}
-          stackPosition="30%"
-          scaleEndPosition="15%"
-          baseScale={0.92}
+          stackPosition="5%"
+          scaleEndPosition="0%"
+          baseScale={0.95}
           blurAmount={1}
         >
           {galleryImages.map((img, i) => (
