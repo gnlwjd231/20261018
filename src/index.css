@@ -171,9 +171,15 @@ figcaption,
   line-height: 1.5;
 }
 
-.editorial-cover {
+.editorial-cover-wrap {
   position: relative;
   height: 100dvh;
+  overflow: hidden;
+}
+
+.editorial-cover {
+  position: absolute;
+  inset: 0;
   margin: 0;
   overflow: hidden;
   background: #EAE1D6;
@@ -194,33 +200,47 @@ figcaption,
   background: rgba(250, 248, 245, 0.82);
   color: #4E463F;
   font-size: 0.58rem;
+  z-index: 2;
 }
 
-.editorial-copy {
-  position: relative;
-  margin-top: -38px;
-  padding: 24px 18px 18px 0;
+.editorial-cover-wrap .light-page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  inset: 0;
+  padding: 28px 24px;
+  background: none;
+  min-height: 0;
+  justify-content: flex-start;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.light-kicker,
-.light-caption,
-.editorial-cover figcaption,
-.event-strip,
-.dark-caption,
-.terminal-bar,
-.ascii-panel {
-  font-family: var(--font-caption);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.editorial-cover-wrap .light-page > * {
+  pointer-events: auto;
 }
 
 .editorial-cover-wrap .light-kicker {
-  color: rgba(255, 255, 255, 0.8);
+  display: inline-block;
+  padding: 6px 10px;
+  background: rgba(250, 248, 245, 0.88);
+  color: var(--accent);
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+  max-width: 240px;
+  line-height: 1.5;
+}
+
+.editorial-cover-wrap .editorial-copy {
+  position: relative;
+  margin-top: 0;
+  padding: 0;
 }
 
 .editorial-cover-wrap .event-strip {
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.75);
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--text-secondary);
   font-family: var(--font-caption);
   letter-spacing: 0.08em;
   text-transform: uppercase;

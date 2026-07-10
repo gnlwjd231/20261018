@@ -4,9 +4,6 @@ import lightPhoto from './assets/images/light/favorite.jpg'
 import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
 import LetterGlitch from './components/LetterGlitch'
-import Dither from './components/Dither'
-import Noise from './components/Noise'
-import LightRays from './components/LightRays'
 import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
 import { LightInfoSection } from './components/info/LightInfoSection'
@@ -65,39 +62,30 @@ function App() {
 function LightModePage() {
   return (
     <>
-    <div className="editorial-cover">
-      <img src={lightPhoto} alt="웨딩 사진" />
-      <div className="cover-lightrays">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#d4c5b0"
-          raysSpeed={0.5}
-          lightSpread={0.6}
-          rayLength={1.5}
-          fadeDistance={0.8}
-          saturation={0.3}
-          followMouse={false}
-        />
-      </div>
+    <div className="editorial-cover-wrap">
+      <figure className="editorial-cover">
+        <img src={lightPhoto} alt="웨딩 사진" />
+        <figcaption>Photo 01 / Seoul, Archive of us</figcaption>
+      </figure>
+      <section className="light-page" aria-label="Light mode invitation">
+        <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
+
+        <div className="editorial-copy">
+          <p className="light-caption">A quiet beginning</p>
+          <BlurText text="The Beginning" className="light-title" delay={80} />
+          <p className="light-body">
+            9년 동안 서로의 일상을 채워온 두 사람이,
+            <br />
+            이제 하나의 일상을 시작합니다.
+          </p>
+        </div>
+
+        <div className="event-strip">
+          <span>{weddingDate}</span>
+          <span>서울대학교 교수회관</span>
+        </div>
+      </section>
     </div>
-    <section className="light-page" aria-label="Light mode invitation">
-      <div className="light-kicker">Chapter 01 / The Wedding Issue</div>
-
-      <div className="editorial-copy">
-        <p className="light-caption">A quiet beginning</p>
-        <BlurText text="The Beginning" className="light-title" delay={80} />
-        <p className="light-body">
-          9년 동안 서로의 일상을 채워온 두 사람이,
-          <br />
-          이제 하나의 일상을 시작합니다.
-        </p>
-      </div>
-
-      <div className="event-strip">
-        <span>{weddingDate}</span>
-        <span>서울대학교 교수회관</span>
-      </div>
-    </section>
 
     <LightStorySection />
     <LightInfoSection />
@@ -108,20 +96,6 @@ function LightModePage() {
 function DarkModePage() {
   return (
     <section className="dark-page" aria-label="Dark mode invitation">
-      <div className="dark-dither-bg">
-        <Dither
-          waveSpeed={0.03}
-          waveFrequency={2.5}
-          waveAmplitude={0.2}
-          waveColor={[0.05, 0.9, 0.3]}
-          colorNum={3}
-          pixelSize={3}
-          enableMouseInteraction={true}
-        />
-      </div>
-      <div className="dark-noise-bg">
-        <Noise patternSize={300} patternAlpha={8} patternRefreshInterval={4} />
-      </div>
       <div className="terminal-frame">
         <div className="terminal-bar">
           <span>guest@wedding:~</span>
