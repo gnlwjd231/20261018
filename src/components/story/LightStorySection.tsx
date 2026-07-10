@@ -97,21 +97,25 @@ export function LightStorySection() {
       >
         {/* Page 1: Cover */}
         <div className="light-story-page">
-          <figure className="light-carousel-cover-figure">
-            <img src={lightPhoto} alt="웨딩 사진" />
-          </figure>
-          <div className="light-carousel-cover-content">
-            <p className="light-caption">A quiet beginning</p>
-            <BlurText text="The Beginning" className="light-title" delay={80} />
-            <p className="light-body">
-              9년 동안 서로의 일상을 채워온 두 사람이,
-              <br />
-              이제 하나의 일상을 시작합니다.
-            </p>
-            <div className="event-strip">
-              <span>{weddingDate}</span>
-              <span>서울대학교 교수회관</span>
-            </div>
+          <div className="editorial-cover-wrap">
+            <figure className="editorial-cover">
+              <img src={lightPhoto} alt="웨딩 사진" />
+            </figure>
+            <section className="light-page">
+              <div className="editorial-copy">
+                <p className="light-caption">A quiet beginning</p>
+                <BlurText text="The Beginning" className="light-title" delay={80} />
+                <p className="light-body">
+                  9년 동안 서로의 일상을 채워온 두 사람이,
+                  <br />
+                  이제 하나의 일상을 시작합니다.
+                </p>
+              </div>
+              <div className="event-strip">
+                <span>{weddingDate}</span>
+                <span>서울대학교 교수회관</span>
+              </div>
+            </section>
           </div>
         </div>
 
