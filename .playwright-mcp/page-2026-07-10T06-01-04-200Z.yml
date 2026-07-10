@@ -1,0 +1,16 @@
+- generic [ref=f13e49]:
+  - generic [ref=f13e50]:
+    - button "Story" [ref=f13e51] [cursor=pointer]
+    - button "Info" [ref=f13e52] [cursor=pointer]
+    - button "Guestbook" [ref=f13e53] [cursor=pointer]
+  - generic [ref=f13e54]:
+    - generic [ref=f13e55]:
+      - generic [ref=f13e56]: "Page 1: Cover"
+      - generic [ref=f13e57]: "Page 2: Ep 01"
+      - generic [ref=f13e58]: "Page 3: Ep 02"
+      - generic [ref=f13e59]: "Page 4: Ep 03"
+      - generic [ref=f13e60]: "Page 5: Gallery"
+    - generic [ref=f13e61]:
+      - button "◀" [ref=f13e62] [cursor=pointer]
+      - generic [ref=f13e63]: 02 / 05
+      - button "▶" [active] [ref=f13e64] [cursor=pointer]

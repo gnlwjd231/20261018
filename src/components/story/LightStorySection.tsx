@@ -1,5 +1,7 @@
-import { useEffect, useRef } from 'react'
-import ScrollStack, { ScrollStackItem } from '@/components/ScrollStack'
+import { useCallback, useRef, useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import lightPhoto from '@/assets/images/light/favorite.jpg'
+import BlurText from '@/components/BlurText'
 
 interface StoryEpisode {
   number: string
@@ -51,73 +53,9 @@ const episodes: StoryEpisode[] = [
   },
 ]
 
-function useScrollReveal(ref: React.RefObject<Element | null>) {
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
+const weddingDate = '2026.10.18 SUN 11:00'
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('story-revealed')
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.15 },
-    )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [ref])
-}
-
-function EpisodeBlock({ episode, index }: { episode: StoryEpisode; index: number }) {
-  const ref = useRef<HTMLElement>(null)
-  useScrollReveal(ref)
-
-  const isEven = index % 2 === 0
-
-  return (
-    <article
-      ref={ref}
-      className={`light-story-episode story-hidden ${isEven ? 'story-episode--left' : 'story-episode--right'}`}
-      aria-label={`에피소드 ${episode.number}: ${episode.caption}`}
-    >
-      <header className="light-episode-header">
-        <span className="light-episode-number">
-          No.{episode.number} / {episode.caption}
-        </span>
-        <h2 className="light-episode-title">{episode.title}</h2>
-      </header>
-
-      {/* 이미지 영역 */}
-      <figure className="light-story-figure" aria-label={episode.imageAlt}>
-        {episode.imageSrc ? (
-          <img src={episode.imageSrc} alt={episode.imageAlt ?? ''} loading="lazy" />
-        ) : (
-          <div
-            className="light-story-figure-placeholder"
-            role="img"
-            aria-label={episode.imageAlt}
-          />
-        )}
-        <figcaption className="light-story-figcaption">
-          {episode.caption} / Archive {episode.number}
-        </figcaption>
-      </figure>
-
-      {/* 텍스트 영역 */}
-      <div className="light-episode-copy">
-        {episode.body.map((line, i) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: static content
-          <p key={i} className="light-episode-body">
-            {line}
-          </p>
-        ))}
-      </div>
-    </article>
-  )
-}
+const TOTAL_PAGES = 5
 
 const galleryImages = [
   { src: '/src/assets/images/light/DSC01974.jpg', alt: '갤러리 사진 01' },
@@ -126,53 +64,133 @@ const galleryImages = [
 ]
 
 export function LightStorySection() {
+  const [currentPage, setCurrentPage] = useState(0)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+
+  const goTo = useCallback((page: number) => {
+    setCurrentPage(Math.max(0, Math.min(page, TOTAL_PAGES - 1)))
+  }, [])
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX
+    const diff = touchStartX.current - touchEndX.current
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goTo(currentPage + 1)
+      else goTo(currentPage - 1)
+    }
+  }
+
   return (
-    <section className="light-story-section" aria-label="우리의 이야기">
-      {/* 섹션 헤더 */}
-      <header className="light-story-header">
-        <span className="light-story-kicker">Our Story / 우리의 이야기</span>
-        <h1 className="light-story-headline">
-          The Archive
-          <br />
-          <em>of Us</em>
-        </h1>
-        <p className="light-story-subhead">
-          드럼 레슨실에서 시작된 이야기,
-          <br />
-          9년이 지나 결혼으로 이어집니다.
-        </p>
-        <div className="light-story-rule" aria-hidden="true" />
-      </header>
+    <div
+      className="light-story-view"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className="light-story-track"
+        style={{ transform: `translateX(-${currentPage * 100}%)` }}
+      >
+        {/* Page 1: Cover */}
+        <div className="light-story-page">
+          <figure className="light-carousel-cover-figure">
+            <img src={lightPhoto} alt="웨딩 사진" />
+          </figure>
+          <div className="light-carousel-cover-content">
+            <p className="light-caption">A quiet beginning</p>
+            <BlurText text="The Beginning" className="light-title" delay={80} />
+            <p className="light-body">
+              9년 동안 서로의 일상을 채워온 두 사람이,
+              <br />
+              이제 하나의 일상을 시작합니다.
+            </p>
+            <div className="event-strip">
+              <span>{weddingDate}</span>
+              <span>서울대학교 교수회관</span>
+            </div>
+          </div>
+        </div>
 
-      {/* 에피소드 목록 */}
-      {episodes.map((ep, i) => (
-        <EpisodeBlock key={ep.number} episode={ep} index={i} />
-      ))}
+        {/* Pages 2-4: Episodes */}
+        {episodes.map((ep) => (
+          <div className="light-story-page light-episode-slide" key={ep.number}>
+            <header className="light-episode-slide-header">
+              <span className="light-episode-number">
+                No.{ep.number} / {ep.caption}
+              </span>
+              <h2 className="light-episode-title">{ep.title}</h2>
+            </header>
 
-      {/* 갤러리 - ScrollStack */}
-      <div className="light-gallery-wrap">
-        <ScrollStack
-          useWindowScroll={true}
-          itemDistance={20}
-          itemScale={0.02}
-          itemStackDistance={20}
-          stackPosition="5%"
-          scaleEndPosition="0%"
-          baseScale={0.95}
-          blurAmount={1}
-        >
-          {galleryImages.map((img, i) => (
-            <ScrollStackItem key={i} itemClassName="light-gallery-card">
-              <figure className="light-gallery-figure" aria-label={img.alt}>
+            <figure className="light-story-figure" aria-label={ep.imageAlt}>
+              {ep.imageSrc ? (
+                <img src={ep.imageSrc} alt={ep.imageAlt ?? ''} loading="lazy" />
+              ) : (
+                <div
+                  className="light-story-figure-placeholder"
+                  role="img"
+                  aria-label={ep.imageAlt}
+                />
+              )}
+              <figcaption className="light-story-figcaption">
+                {ep.caption} / Archive {ep.number}
+              </figcaption>
+            </figure>
+
+            <div className="light-episode-copy">
+              {ep.body.map((line, i) => (
+                <p key={i} className="light-episode-body">{line}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* Page 5: Gallery */}
+        <div className="light-story-page light-gallery-slide">
+          <header className="light-gallery-slide-header">
+            <h3 className="light-gallery-slide-title">The Archive</h3>
+            <p className="light-gallery-slide-sub">of Us</p>
+          </header>
+          <div className="light-gallery-slide-track">
+            {galleryImages.map((img, i) => (
+              <figure key={i} className="light-gallery-slide-figure" aria-label={img.alt}>
                 <img src={img.src} alt={img.alt} loading="lazy" />
-                <figcaption className="light-gallery-card-caption">
+                <figcaption className="light-gallery-slide-caption">
                   Photo {String(i + 1).padStart(2, '0')}
                 </figcaption>
               </figure>
-            </ScrollStackItem>
-          ))}
-        </ScrollStack>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+
+      {/* Pagination */}
+      <div className="light-story-pagination">
+        <button
+          className="light-story-pg-btn"
+          type="button"
+          onClick={() => goTo(currentPage - 1)}
+          disabled={currentPage === 0}
+          aria-label="이전 페이지"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <span className="light-story-pg-info">
+          {String(currentPage + 1).padStart(2, '0')} / {String(TOTAL_PAGES).padStart(2, '0')}
+        </span>
+        <button
+          className="light-story-pg-btn"
+          type="button"
+          onClick={() => goTo(currentPage + 1)}
+          disabled={currentPage === TOTAL_PAGES - 1}
+          aria-label="다음 페이지"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+    </div>
   )
 }

@@ -1,0 +1,39 @@
+- generic [active] [ref=f13e1]:
+  - generic [ref=f13e2]:
+    - button "Story" [ref=f13e3] [cursor=pointer]
+    - button "Info" [ref=f13e4] [cursor=pointer]
+    - button "Guestbook" [ref=f13e5] [cursor=pointer]
+  - generic [ref=f13e6]:
+    - generic [ref=f13e7]: "#light-story"
+    - generic [ref=f13e8]:
+      - generic [ref=f13e9]:
+        - generic [ref=f13e10]:
+          - paragraph [ref=f13e11]: A quiet beginning
+          - heading "The Beginning" [level=2] [ref=f13e12]
+          - paragraph [ref=f13e13]: 9년 동안 서로의 일상을 채워온 두 사람이,이제 하나의 일상을 시작합니다.
+        - generic [ref=f13e14]:
+          - paragraph [ref=f13e15]: No.01 / The Lesson
+          - heading "A Chance Encounter" [level=3] [ref=f13e16]
+          - generic [ref=f13e17]: DSC02075.jpg
+          - paragraph [ref=f13e19]: 드럼 스틱을 처음 건네받은 날이었습니다.레슨실 창문으로 들어오던 오후 햇살과,낯선 사람의 눈이 처음으로 마주쳤습니다.
+        - generic [ref=f13e20]:
+          - paragraph [ref=f13e21]: No.02 / The Years
+          - heading "Nine Slow Seasons" [level=3] [ref=f13e22]
+          - generic [ref=f13e23]: DSC02481.jpg
+          - paragraph [ref=f13e25]: 9년이라는 시간은 길었지만,돌아보면 그 모든 날들이 짧게 느껴집니다.같은 음악을 듣고, 같은 밥을 먹고,서로의 일상이 되어갔습니다.
+        - generic [ref=f13e26]:
+          - paragraph [ref=f13e27]: No.03 / The Decision
+          - heading "An Ordinary Day" [level=3] [ref=f13e28]
+          - generic [ref=f13e29]: DSC02774.jpg
+          - paragraph [ref=f13e31]: 결혼을 결심한 날은특별한 날이 아니었습니다.그저 평범한 하루였는데,이 사람과 평생 평범하고 싶다는 생각이 들었습니다.
+        - generic [ref=f13e32]:
+          - heading "The Archive" [level=2] [ref=f13e33]
+          - paragraph [ref=f13e34]: of Us
+          - generic [ref=f13e35]:
+            - figure "Photo 01" [ref=f13e36]
+            - figure "Photo 02" [ref=f13e39]
+            - figure "Photo 03" [ref=f13e42]
+      - generic [ref=f13e45]:
+        - button "◀" [ref=f13e46] [cursor=pointer]
+        - generic [ref=f13e47]: 01 / 05
+        - button "▶" [ref=f13e48] [cursor=pointer]

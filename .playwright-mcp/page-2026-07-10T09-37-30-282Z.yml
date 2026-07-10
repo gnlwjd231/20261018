@@ -1,0 +1,239 @@
+- main [ref=f4e3]:
+  - button "dark mode" [ref=f4e4] [cursor=pointer]
+  - generic [ref=f4e7]:
+    - generic [ref=f4e9]:
+      - generic [ref=f4e10]:
+        - generic [ref=f4e12]:
+          - figure [ref=f4e13]:
+            - img "웨딩 사진" [ref=f4e14]
+          - generic:
+            - generic [ref=f4e15]:
+              - paragraph [ref=f4e16]: A quiet beginning
+              - paragraph [ref=f4e17]:
+                - generic [ref=f4e18]: The
+                - generic [ref=f4e19]: Beginning
+              - paragraph [ref=f4e20]: 9년 동안 서로의 일상을 채워온 두 사람이,이제 하나의 일상을 시작합니다.
+            - generic [ref=f4e21]:
+              - generic [ref=f4e22]: 2026.10.18 SUN 11:00
+              - generic [ref=f4e23]: 서울대학교 교수회관
+        - 'article "에피소드 01: The Lesson" [ref=f4e25]':
+          - generic [ref=f4e26]:
+            - generic [ref=f4e27]: No.01 / The Lesson
+            - heading "A Chance Encounter" [level=2] [ref=f4e28]
+          - figure "드럼 레슨, 첫 만남의 순간을 담은 사진" [ref=f4e29]:
+            - img "드럼 레슨, 첫 만남의 순간을 담은 사진" [ref=f4e30]
+            - generic [ref=f4e31]: The Lesson / Archive 01
+          - generic [ref=f4e32]:
+            - paragraph [ref=f4e33]: 드럼 스틱을 처음 건네받은 날이었습니다.
+            - paragraph [ref=f4e34]: 레슨실 창문으로 들어오던 오후 햇살과,
+            - paragraph [ref=f4e35]: 낯선 사람의 눈이 처음으로 마주쳤습니다.
+        - 'article "에피소드 02: The Years" [ref=f4e37]':
+          - generic [ref=f4e38]:
+            - generic [ref=f4e39]: No.02 / The Years
+            - heading "Nine Slow Seasons" [level=2] [ref=f4e40]
+          - figure "함께한 9년의 시간을 담은 사진" [ref=f4e41]:
+            - img "함께한 9년의 시간을 담은 사진" [ref=f4e42]
+            - generic [ref=f4e43]: The Years / Archive 02
+          - generic [ref=f4e44]:
+            - paragraph [ref=f4e45]: 9년이라는 시간은 길었지만,
+            - paragraph [ref=f4e46]: 돌아보면 그 모든 날들이 짧게 느껴집니다.
+            - paragraph [ref=f4e47]: 같은 음악을 듣고, 같은 밥을 먹고,
+            - paragraph [ref=f4e48]: 서로의 일상이 되어갔습니다.
+        - 'article "에피소드 03: The Decision" [ref=f4e50]':
+          - generic [ref=f4e51]:
+            - generic [ref=f4e52]: No.03 / The Decision
+            - heading "An Ordinary Day" [level=2] [ref=f4e53]
+          - figure "결혼을 결심한 평범하지만 소중한 날의 사진" [ref=f4e54]:
+            - img "결혼을 결심한 평범하지만 소중한 날의 사진" [ref=f4e55]
+            - generic [ref=f4e56]: The Decision / Archive 03
+          - generic [ref=f4e57]:
+            - paragraph [ref=f4e58]: 결혼을 결심한 날은
+            - paragraph [ref=f4e59]: 특별한 날이 아니었습니다.
+            - paragraph [ref=f4e60]: 그저 평범한 하루였는데,
+            - paragraph [ref=f4e61]: 이 사람과 평생 평범하고 싶다는 생각이 들었습니다.
+        - generic [ref=f4e63]:
+          - generic [ref=f4e64]:
+            - heading "The Archive" [level=2] [ref=f4e65]
+            - paragraph [ref=f4e66]: of Us
+          - generic [ref=f4e67]:
+            - figure "갤러리 사진 01" [ref=f4e68]:
+              - img "갤러리 사진 01"
+              - generic [ref=f4e69]: Photo 01
+            - figure "갤러리 사진 02" [ref=f4e70]:
+              - img "갤러리 사진 02"
+              - generic [ref=f4e71]: Photo 02
+            - figure "갤러리 사진 03" [ref=f4e72]:
+              - img "갤러리 사진 03"
+              - generic [ref=f4e73]: Photo 03
+      - generic [ref=f4e74]:
+        - button "Previous page" [disabled] [ref=f4e75]
+        - generic [ref=f4e78]: 01 / 05
+        - button "Next page" [ref=f4e79] [cursor=pointer]
+    - generic [ref=f4e84] [cursor=pointer]:
+      - generic [ref=f4e85]: W
+      - generic [ref=f4e86]: e
+      - generic [ref=f4e87]: d
+      - generic [ref=f4e88]: d
+      - generic [ref=f4e89]: i
+      - generic [ref=f4e90]: "n"
+      - generic [ref=f4e91]: g
+      - generic [ref=f4e93]: I
+      - generic [ref=f4e94]: "n"
+      - generic [ref=f4e95]: f
+      - generic [ref=f4e96]: o
+      - generic [ref=f4e97]: r
+      - generic [ref=f4e98]: m
+      - generic [ref=f4e99]: a
+      - generic [ref=f4e100]: t
+      - generic [ref=f4e101]: i
+      - generic [ref=f4e102]: o
+      - generic [ref=f4e103]: "n"
+      - generic [ref=f4e105]: W
+      - generic [ref=f4e106]: e
+      - generic [ref=f4e107]: d
+      - generic [ref=f4e108]: d
+      - generic [ref=f4e109]: i
+      - generic [ref=f4e110]: "n"
+      - generic [ref=f4e111]: g
+      - generic [ref=f4e113]: I
+      - generic [ref=f4e114]: "n"
+      - generic [ref=f4e115]: f
+      - generic [ref=f4e116]: o
+      - generic [ref=f4e117]: r
+      - generic [ref=f4e118]: m
+      - generic [ref=f4e119]: a
+      - generic [ref=f4e120]: t
+      - generic [ref=f4e121]: i
+      - generic [ref=f4e122]: o
+      - generic [ref=f4e123]: "n"
+    - generic [ref=f4e126]:
+      - region "예식 날짜 카운트다운" [ref=f4e128]:
+        - 'generic "결혼식 디데이: D-100" [ref=f4e129]':
+          - generic [ref=f4e130]: Wedding Countdown
+          - generic [ref=f4e131]: D-100
+          - paragraph [ref=f4e132]: 2026년 10월 18일 일요일 오전 11시
+          - paragraph [ref=f4e133]: 결혼식까지 100일 남았습니다
+          - generic [ref=f4e134]:
+            - link "구글 캘린더에 일정 추가" [ref=f4e135] [cursor=pointer]:
+              - /url: https://calendar.google.com/calendar/render?action=TEMPLATE&text=%EC%98%A4%EA%B8%B0%EC%8A%B9%E2%99%A5%EB%B0%95%ED%9C%98%EC%A0%95%20%EA%B2%B0%ED%98%BC%EC%8B%9D&dates=20261018T020000Z/20261018T040000Z&details=%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B5%90%EC%88%98%ED%9A%8C%EA%B4%80&location=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B4%80%EC%95%85%EA%B5%AC%20%EA%B4%80%EC%95%85%EB%A1%9C%201%20%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B5%90%EC%88%98%ED%9A%8C%EA%B4%80
+              - text: Google Calendar
+            - link "애플 캘린더에 일정 추가" [ref=f4e136] [cursor=pointer]:
+              - /url: "#"
+              - text: Apple Calendar
+      - region "예식장 위치 및 교통편" [ref=f4e138]:
+        - heading "오시는 길" [level=2] [ref=f4e139]
+        - generic "예식장 위치 정보" [ref=f4e140]:
+          - generic [ref=f4e141]:
+            - paragraph [ref=f4e142]: 서울대학교 교수회관
+            - generic [ref=f4e143]:
+              - button "주소 복사" [ref=f4e144]: 서울특별시 관악구 관악로 1 서울대학교 내 65동
+              - button "주소 복사" [ref=f4e145] [cursor=pointer]
+          - generic "지도 앱으로 열기" [ref=f4e149]:
+            - link "카카오맵에서 길찾기" [ref=f4e150] [cursor=pointer]:
+              - /url: https://map.kakao.com/link/map/%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B5%90%EC%88%98%ED%9A%8C%EA%B4%80,37.46,126.953
+              - text: 카카오맵
+            - link "네이버 지도에서 길찾기" [ref=f4e151] [cursor=pointer]:
+              - /url: https://map.naver.com/v5/search/%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B5%90%EC%88%98%ED%9A%8C%EA%B4%80
+              - text: 네이버 지도
+            - link "티맵에서 길찾기" [ref=f4e152] [cursor=pointer]:
+              - /url: tmap://search?name=%EC%84%9C%EC%9A%B8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B5%90%EC%88%98%ED%9A%8C%EA%B4%80
+              - text: 티맵
+        - region "교통편 안내" [ref=f4e153]:
+          - generic [ref=f4e154]:
+            - generic [ref=f4e155]: 찾아오시는 길
+            - heading "오시는 방법" [level=2] [ref=f4e156]
+          - generic [ref=f4e157]:
+            - generic [ref=f4e158]: 지하철
+            - paragraph [ref=f4e164]:
+              - text: 2호선
+              - strong [ref=f4e165]: 낙성대역
+              - text: 4번 출구
+          - generic [ref=f4e166]:
+            - generic [ref=f4e167]: 마을버스 (권장)
+            - list "교통편 단계별 안내" [ref=f4e173]:
+              - listitem [ref=f4e174]:
+                - generic [ref=f4e175]: 2호선 낙성대역 4번 출구로 나옵니다.
+              - listitem [ref=f4e176]:
+                - generic [ref=f4e177]: 4번 출구 바로 앞(10m), GS칼텍스 주유소를 지나 우회전합니다.
+              - listitem [ref=f4e178]:
+                - generic [ref=f4e179]: 우회전 직후, "관악 02" 정류장에서 관악 02-1번 탑승합니다.
+              - listitem [ref=f4e180]:
+                - generic [ref=f4e183]: 서울대 진입 전 "호암교수회관"에서 절대 내리지 마세요.
+              - listitem [ref=f4e184]:
+                - generic [ref=f4e185]: 서울대학교 진입 이후, "공동기기원(교수회관)"에서 하차합니다.
+              - listitem [ref=f4e186]:
+                - generic [ref=f4e187]: 하차 후 교통안내판을 따라 약 200m 걸으면 교수회관에 도착합니다.
+          - generic [ref=f4e188]:
+            - generic [ref=f4e189]: 자가용
+            - paragraph [ref=f4e195]:
+              - text: "주차:"
+              - strong [ref=f4e196]: 무료 (주차 자유)
+            - paragraph [ref=f4e197]:
+              - text: "내비게이션 검색어:"
+              - strong [ref=f4e198]: “서울대학교 교수회관”
+      - region "연락처 및 계좌번호" [ref=f4e200]:
+        - heading "연락처" [level=2] [ref=f4e201]
+        - region "연락처" [ref=f4e202]:
+          - generic [ref=f4e203]:
+            - heading "신랑 & 신부" [level=3] [ref=f4e204]
+            - generic [ref=f4e205]:
+              - button "신랑 오기승" [ref=f4e206] [cursor=pointer]:
+                - generic [ref=f4e207]:
+                  - generic [ref=f4e208]: 신랑
+                  - generic [ref=f4e209]: 오기승
+              - button "오기승 전화번호 복사" [ref=f4e212] [cursor=pointer]:
+                - generic [ref=f4e213]: 전화번호
+                - generic [ref=f4e214]: 010-2774-5201
+            - generic [ref=f4e218]:
+              - button "신부 박휘정" [ref=f4e219] [cursor=pointer]:
+                - generic [ref=f4e220]:
+                  - generic [ref=f4e221]: 신부
+                  - generic [ref=f4e222]: 박휘정
+              - generic:
+                - generic:
+                  - button "박휘정 전화번호 복사" [ref=f4e225] [cursor=pointer]:
+                    - generic [ref=f4e226]: 전화번호
+                    - generic [ref=f4e227]: 010-2327-4009
+                  - button "박휘정 계좌번호 복사" [ref=f4e231] [cursor=pointer]:
+                    - generic [ref=f4e232]: 계좌번호
+                    - generic [ref=f4e233]: 하나은행 135-910012-95905
+          - generic [ref=f4e237]:
+            - heading "신랑측" [level=3] [ref=f4e238]
+            - generic [ref=f4e239]:
+              - button "아버지 오병목" [ref=f4e240] [cursor=pointer]:
+                - generic [ref=f4e241]:
+                  - generic [ref=f4e242]: 아버지
+                  - generic [ref=f4e243]: 오병목
+              - button "오병목 전화번호 복사" [ref=f4e246] [cursor=pointer]:
+                - generic [ref=f4e247]: 전화번호
+                - generic [ref=f4e248]: 010-2774-5201
+            - generic [ref=f4e252]:
+              - button "어머니 최경자" [ref=f4e253] [cursor=pointer]:
+                - generic [ref=f4e254]:
+                  - generic [ref=f4e255]: 어머니
+                  - generic [ref=f4e256]: 최경자
+              - button "최경자 전화번호 복사" [ref=f4e259] [cursor=pointer]:
+                - generic [ref=f4e260]: 전화번호
+                - generic [ref=f4e261]: 010-2774-5201
+          - generic [ref=f4e265]:
+            - heading "신부측" [level=3] [ref=f4e266]
+            - generic [ref=f4e267]:
+              - button "아버지 박호준" [ref=f4e268] [cursor=pointer]:
+                - generic [ref=f4e269]:
+                  - generic [ref=f4e270]: 아버지
+                  - generic [ref=f4e271]: 박호준
+              - button "박호준 전화번호 복사" [ref=f4e274] [cursor=pointer]:
+                - generic [ref=f4e275]: 전화번호
+                - generic [ref=f4e276]: 010-7190-3450
+    - region "방명록" [ref=f4e281]:
+      - heading "방명록" [level=3] [ref=f4e282]
+      - paragraph [ref=f4e283]: 두 사람의 새로운 시작을 축하하는 메시지를 남겨주세요.※ 한 번 남긴 메시지는 수정이나 삭제가 불가능하니 신중히 작성해주세요.
+      - generic [ref=f4e284]:
+        - textbox "실명을 입력해주세요" [ref=f4e285]
+        - textbox "축하 메시지를 남겨주세요" [ref=f4e286]
+        - button "메시지 남기기" [disabled] [ref=f4e287]
+      - generic [ref=f4e292]: 아직 남겨진 메시지가 없습니다. 첫 번째 축하 메시지를 남겨주세요!
+  - navigation "Section navigation" [ref=f4e297]:
+    - button "Story" [ref=f4e298] [cursor=pointer]
+    - button "Info" [ref=f4e299] [cursor=pointer]
+    - button "Guestbook" [ref=f4e300] [cursor=pointer]

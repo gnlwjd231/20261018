@@ -1,0 +1,40 @@
+- main [ref=f5e3]:
+  - button "dark mode" [ref=f5e4] [cursor=pointer]
+  - generic [ref=f5e7]:
+    - generic [ref=f5e9]:
+      - generic [ref=f5e10]:
+        - generic [ref=f5e12]
+        - 'article "에피소드 01: The Lesson" [ref=f5e25]'
+        - 'article "에피소드 02: The Years" [ref=f5e37]'
+        - 'article "에피소드 03: The Decision" [ref=f5e50]'
+        - generic [ref=f5e63]
+      - generic [ref=f5e74]:
+        - button "Previous page" [disabled] [ref=f5e75]
+        - generic [ref=f5e78]: 01 / 05
+        - button "Next page" [ref=f5e79] [cursor=pointer]
+    - generic [ref=f5e83]:
+      - generic [ref=f5e84]: Wedding Information
+      - region "예식 날짜 카운트다운" [ref=f5e87]:
+        - 'generic "결혼식 디데이: D-100" [ref=f5e88]'
+      - region "예식장 위치 및 교통편" [ref=f5e97]:
+        - heading "오시는 길" [level=2] [ref=f5e98]
+        - generic "예식장 위치 정보" [ref=f5e99]
+        - region "교통편 안내" [ref=f5e112]
+      - region "연락처 및 계좌번호" [ref=f5e159]:
+        - heading "연락처" [level=2] [ref=f5e160]
+        - region "연락처" [ref=f5e161]
+    - region "방명록" [ref=f5e240]:
+      - heading "방명록" [level=3] [ref=f5e241]
+      - paragraph [ref=f5e242]: 두 사람의 새로운 시작을 축하하는 메시지를 남겨주세요.※ 한 번 남긴 메시지는 수정이나 삭제가 불가능하니 신중히 작성해주세요.
+      - generic [ref=f5e243]:
+        - textbox "실명을 입력해주세요" [ref=f5e244]
+        - textbox "축하 메시지를 남겨주세요" [ref=f5e245]
+        - button "메시지 남기기" [disabled] [ref=f5e246]
+      - generic [ref=f5e251]:
+        - generic [ref=f5e260]
+        - generic [ref=f5e265]
+        - generic [ref=f5e270]
+  - navigation "Section navigation" [ref=f5e256]:
+    - button "Story" [ref=f5e257] [cursor=pointer]
+    - button "Info" [ref=f5e258] [cursor=pointer]
+    - button "Guestbook" [ref=f5e259] [cursor=pointer]

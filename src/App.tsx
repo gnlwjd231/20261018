@@ -1,6 +1,5 @@
 import { Moon, Sun } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import lightPhoto from './assets/images/light/favorite.jpg'
 import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
 import LetterGlitch from './components/LetterGlitch'
@@ -8,6 +7,10 @@ import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
 import { LightInfoSection } from './components/info/LightInfoSection'
 import { DarkInfoSection } from './components/info/DarkInfoSection'
+import { LightSectionNav } from './components/light/LightSectionNav'
+import { GuestbookSection } from './components/guestbook/GuestbookSection'
+import CircularText from './components/CircularText'
+import { FadeIn } from './components/ui/FadeIn'
 
 type Mode = 'light' | 'dark'
 
@@ -55,6 +58,7 @@ function App() {
       <div className="mode-stage" key={mode}>
         {mode === 'light' ? <LightModePage /> : <DarkModePage />}
       </div>
+      {mode === 'light' && <LightSectionNav />}
     </main>
   )
 }
@@ -62,30 +66,23 @@ function App() {
 function LightModePage() {
   return (
     <>
-    <div className="editorial-cover-wrap">
-      <figure className="editorial-cover">
-        <img src={lightPhoto} alt="웨딩 사진" />
-      </figure>
-      <section className="light-page" aria-label="Light mode invitation">
-        <div className="editorial-copy">
-          <p className="light-caption">A quiet beginning</p>
-          <BlurText text="The Beginning" className="light-title" delay={80} />
-          <p className="light-body">
-            9년 동안 서로의 일상을 채워온 두 사람이,
-            <br />
-            이제 하나의 일상을 시작합니다.
-          </p>
-        </div>
+    <section id="light-story" className="light-snap-section">
+      <LightStorySection />
+    </section>
 
-        <div className="event-strip">
-          <span>{weddingDate}</span>
-          <span>서울대학교 교수회관</span>
-        </div>
-      </section>
-    </div>
 
-    <LightStorySection />
-    <LightInfoSection />
+    <section id="light-info" className="light-snap-section">
+      <FadeIn className="light-section-circular-container">
+        <div className="light-section-circular-wrapper" aria-hidden="true">
+          <CircularText text="Wedding Information Wedding Information " spinDuration={100} className="light-divider-circular" />
+        </div>
+      </FadeIn>
+      <LightInfoSection />
+    </section>
+
+    <section id="light-guestbook" className="light-snap-section">
+      <GuestbookSection mode="light" />
+    </section>
     </>
   )
 }
