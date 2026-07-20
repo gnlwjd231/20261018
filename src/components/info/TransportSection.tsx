@@ -45,11 +45,6 @@ export function TransportSection({ mode }: TransportProps) {
 
   return (
     <section className="light-transport-section" aria-label="교통편 안내">
-      <header className="light-transport-header">
-        <span className="light-story-kicker">찾아오시는 길</span>
-        <h2 className="light-transport-title">오시는 방법</h2>
-      </header>
-
       {/* 지하철 */}
       <div className="light-transport-block">
         <div className="light-transport-block-head">

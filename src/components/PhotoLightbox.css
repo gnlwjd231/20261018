@@ -5,33 +5,21 @@
   background: rgba(0, 0, 0, 0.88);
   height: 100dvh;
   overflow: hidden;
-}
-
-.lightbox-track-wrap {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  touch-action: none;
-}
-
-.lightbox-track {
   display: flex;
-  height: 100%;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
+  flex-direction: column;
 }
 
-.lightbox-slide {
-  flex: 0 0 100%;
+.lightbox-main {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: 0;
 }
 
-.lightbox-image {
+.lightbox-main-image {
   max-width: 92vw;
-  max-height: 88vh;
+  max-height: calc(100vh - 180px);
   object-fit: contain;
   user-select: none;
   -webkit-user-drag: none;
@@ -91,7 +79,7 @@
 
 .lightbox-counter {
   position: fixed;
-  bottom: 28px;
+  bottom: 118px;
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255, 255, 255, 0.6);
@@ -102,4 +90,59 @@
   background: rgba(0, 0, 0, 0.35);
   padding: 6px 14px;
   border-radius: 20px;
+}
+
+.filmstrip-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 112px;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  z-index: 10000;
+}
+
+.filmstrip-wrap:active {
+  cursor: grabbing;
+}
+
+.filmstrip-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  width: fit-content;
+  padding: 16px 0;
+  background-color: #1a1a1a;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  background-size: 36px 100%;
+  background-repeat: repeat-x;
+}
+
+.filmstrip-thumb {
+  flex: 0 0 80px;
+  height: 80px;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.filmstrip-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.filmstrip-thumb--active {
+  border-color: #fff;
+  transform: scale(1.05);
 }

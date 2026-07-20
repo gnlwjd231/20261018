@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import lightPhoto from '@/assets/images/light/favorite.jpg'
 import BlurText from '@/components/BlurText'
@@ -8,6 +9,9 @@ import PhotoLightbox from '@/components/PhotoLightbox'
 const weddingDate = '2026.10.18 SUN 11:00'
 
 const TOTAL_PAGES = 3
+
+const optPath = (p: string) => p.replace(/\.jpg$/, '.webp').replace(/\/(light|dark)\//, '/$1/opt/')
+const thumbPath = (p: string) => p.replace(/\.jpg$/, '.webp').replace(/\/(light|dark)\//, '/$1/thumb/')
 
 const masonryItems = [
   { id: 'm1', img: '/src/assets/images/dark/DSC03633_(3).jpg', height: 320 },
@@ -38,9 +42,10 @@ const masonryItems = [
   { id: 'm26', img: '/src/assets/images/light/DSC02071.jpg', height: 400 },
   { id: 'm27', img: '/src/assets/images/dark/DSC03620.jpg', height: 240 },
   { id: 'm28', img: '/src/assets/images/dark/DSC03275.jpg', height: 340 },
-]
+].map(i => ({ ...i, img: optPath(i.img) }))
 
 const masonryImages = masonryItems.map(i => i.img)
+const masonryThumbnails = masonryItems.map(i => thumbPath(i.img.replace('/opt/', '/')))
 
 export function LightStorySection() {
   const [currentPage, setCurrentPage] = useState(0)
@@ -126,8 +131,9 @@ export function LightStorySection() {
 
       </div>
 
-      {selectedIndex !== null && (
-        <PhotoLightbox images={masonryImages} initialIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />
+      {selectedIndex !== null && createPortal(
+        <PhotoLightbox images={masonryImages} thumbnails={masonryThumbnails} initialIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />,
+        document.body
       )}
 
       {/* Pagination */}

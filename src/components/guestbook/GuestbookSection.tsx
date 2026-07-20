@@ -62,7 +62,7 @@ export function GuestbookSection({ mode }: GuestbookSectionProps) {
   }
 
   return (
-    <section className={`gb-section gb-section--${mode}`} aria-label="방명록">
+    <section className={`gb-section p-4024 gb-section--${mode}`} aria-label="방명록">
       {mode === 'dark' && (
         <p className="dark-story-prompt">
           <span className="dark-prompt-caret">$</span> echo "congratulations" &gt;&gt; guestbook

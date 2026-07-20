@@ -4,103 +4,151 @@ import './PhotoLightbox.css'
 
 interface PhotoLightboxProps {
   images: string[]
+  thumbnails?: string[]
   initialIndex: number
   onClose: () => void
 }
 
-export default function PhotoLightbox({ images, initialIndex, onClose }: PhotoLightboxProps) {
+const SLOT_W = 88
+
+function snapOffset(i: number, total: number, cw: number): number {
+  const ca = (cw - SLOT_W) / 2
+  return Math.max(ca - (total - 1) * SLOT_W, Math.min(ca, ca - i * SLOT_W))
+}
+
+export default function PhotoLightbox({ images, thumbnails, initialIndex, onClose }: PhotoLightboxProps) {
   const [index, setIndex] = useState(initialIndex)
-  const [dragOffset, setDragOffset] = useState(0)
-  const draggingRef = useRef(false)
-  const startX = useRef(0)
+  const [filmOffset, setFilmOffset] = useState<number>(0)
+  const [dragging, setDragging] = useState(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const lastXRef = useRef(0)
+  const offsetRef = useRef(0)
+
+  const goNext = useCallback(() => {
+    setIndex(i => {
+      const next = Math.min(images.length - 1, i + 1)
+      const cw = wrapRef.current?.clientWidth ?? 400
+      setFilmOffset(snapOffset(next, images.length, cw))
+      return next
+    })
+  }, [images.length])
+
+  const goPrev = useCallback(() => {
+    setIndex(i => {
+      const next = Math.max(0, i - 1)
+      const cw = wrapRef.current?.clientWidth ?? 400
+      setFilmOffset(snapOffset(next, images.length, cw))
+      return next
+    })
+  }, [images.length])
 
   const goTo = useCallback((i: number) => {
-    setIndex(Math.max(0, Math.min(i, images.length - 1)))
-    setDragOffset(0)
+    const next = Math.max(0, Math.min(i, images.length - 1))
+    const cw = wrapRef.current?.clientWidth ?? 400
+    setIndex(next)
+    setFilmOffset(snapOffset(next, images.length, cw))
   }, [images.length])
 
   useEffect(() => {
+    const cw = wrapRef.current?.clientWidth ?? 400
+    const off = snapOffset(index, images.length, cw)
+    offsetRef.current = off
+    setFilmOffset(off)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
     document.body.style.overflow = 'hidden'
-    const handleKey = (e: KeyboardEvent) => {
+    const h = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowLeft') goTo(index - 1)
-      if (e.key === 'ArrowRight') goTo(index + 1)
+      if (e.key === 'ArrowLeft') goPrev()
+      if (e.key === 'ArrowRight') goNext()
     }
-    window.addEventListener('keydown', handleKey)
+    window.addEventListener('keydown', h)
     return () => {
       document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKey)
+      window.removeEventListener('keydown', h)
     }
-  }, [onClose, index, goTo])
+  }, [onClose, goPrev, goNext])
 
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    draggingRef.current = true
-    startX.current = e.clientX
-    const el = e.currentTarget as HTMLElement
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
+    if (!(e.target instanceof HTMLElement)) return
+    const el = e.currentTarget
     el.setPointerCapture(e.pointerId)
-  }, [])
+    lastXRef.current = e.clientX
+    offsetRef.current = filmOffset
+    setDragging(true)
 
-  const handlePointerMove = useCallback((e: React.PointerEvent) => {
-    if (!draggingRef.current) return
-    const el = e.currentTarget as HTMLElement
-    const rect = el.getBoundingClientRect()
-    const deltaPx = e.clientX - startX.current
-    setDragOffset((deltaPx / rect.width) * 100)
-  }, [])
+    const onMove = (ev: PointerEvent) => {
+      const dx = ev.clientX - lastXRef.current
+      lastXRef.current = ev.clientX
+      const cw = wrapRef.current?.clientWidth ?? 400
+      const ca = (cw - SLOT_W) / 2
+      const minOff = ca - (images.length - 1) * SLOT_W
+      offsetRef.current = Math.max(minOff, Math.min(ca, offsetRef.current + dx))
+      setFilmOffset(offsetRef.current)
+      const raw = (ca - offsetRef.current) / SLOT_W
+      setIndex(Math.max(0, Math.min(Math.round(raw), images.length - 1)))
+    }
 
-  const handlePointerUp = useCallback((e: React.PointerEvent) => {
-    if (!draggingRef.current) return
-    draggingRef.current = false
+    const onUp = () => {
+      el.removeEventListener('pointermove', onMove)
+      el.removeEventListener('pointerup', onUp)
+      setDragging(false)
+      const cw = wrapRef.current?.clientWidth ?? 400
+      const ca = (cw - SLOT_W) / 2
+      const raw = (ca - offsetRef.current) / SLOT_W
+      const si = Math.max(0, Math.min(Math.round(raw), images.length - 1))
+      const off = snapOffset(si, images.length, cw)
+      offsetRef.current = off
+      setFilmOffset(off)
+      setIndex(si)
+    }
 
-    const el = e.currentTarget as HTMLElement
-    const rect = el.getBoundingClientRect()
-    const deltaPx = e.clientX - startX.current
-    const deltaPercent = (deltaPx / rect.width) * 100
-
-    const totalOffset = -(index * 100) + deltaPercent
-    const snapped = Math.round(-totalOffset / 100)
-    goTo(snapped)
-  }, [index, goTo])
-
-  const offset = -(index * 100) + dragOffset
-  const isDragging = dragOffset !== 0
+    el.addEventListener('pointermove', onMove)
+    el.addEventListener('pointerup', onUp)
+  }, [filmOffset, images.length])
 
   return (
-    <div className="lightbox-overlay" onClick={onClose}>
-      <button className="lightbox-close" onClick={onClose} aria-label="닫기">
+    <div className="lightbox-overlay" onClick={() => onClose()}>
+      <button className="lightbox-close" onClick={() => onClose()} aria-label="닫기">
         <X size={24} />
       </button>
 
-      {!isDragging && index > 0 && (
-        <button className="lightbox-nav lightbox-nav--prev" onClick={e => { e.stopPropagation(); goTo(index - 1) }} aria-label="이전">
+      <div className="lightbox-main" onClick={e => e.stopPropagation()}>
+        <img src={images[index]} alt="" className="lightbox-main-image" />
+      </div>
+
+      {!dragging && index > 0 && (
+        <button className="lightbox-nav lightbox-nav--prev" onClick={e => { e.stopPropagation(); goPrev() }} aria-label="이전">
           <ChevronLeft size={28} />
         </button>
       )}
-      {!isDragging && index < images.length - 1 && (
-        <button className="lightbox-nav lightbox-nav--next" onClick={e => { e.stopPropagation(); goTo(index + 1) }} aria-label="다음">
+      {!dragging && index < images.length - 1 && (
+        <button className="lightbox-nav lightbox-nav--next" onClick={e => { e.stopPropagation(); goNext() }} aria-label="다음">
           <ChevronRight size={28} />
         </button>
       )}
 
-      <div className="lightbox-counter">{String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</div>
+      <div className="lightbox-counter">
+        {String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+      </div>
 
-      <div
-        className="lightbox-track-wrap"
-        onClick={e => e.stopPropagation()}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-      >
+      <div ref={wrapRef} className="filmstrip-wrap" onClick={e => e.stopPropagation()}>
         <div
-          className="lightbox-track"
+          className="filmstrip-track"
+          onPointerDown={onPointerDown}
           style={{
-            transform: `translateX(${offset}%)`,
-            transition: isDragging ? 'none' : undefined,
+            transform: `translateX(${filmOffset}px)`,
+            transition: dragging ? 'none' : undefined,
           }}
         >
           {images.map((img, i) => (
-            <div key={i} className="lightbox-slide">
-              <img src={img} alt="" className="lightbox-image" />
+            <div
+              key={i}
+              className={`filmstrip-thumb${i === index ? ' filmstrip-thumb--active' : ''}`}
+              onClick={e => { e.stopPropagation(); goTo(i) }}
+            >
+              <img src={thumbnails?.[i] ?? img} alt="" />
             </div>
           ))}
         </div>
