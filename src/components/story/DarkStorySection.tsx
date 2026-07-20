@@ -183,7 +183,7 @@ export function DarkStorySection() {
         <figure className="dark-story-figure" aria-label="신랑이 드럼을 치고 있는 모습">
           <img
             className="dark-story-image"
-            src="/src/assets/images/dark/DSC03496.jpg"
+            src="/images/dark/DSC03496.jpg"
             alt="드럼을 치고 있는 신랑"
             loading="lazy"
           />
@@ -196,7 +196,7 @@ export function DarkStorySection() {
         <figure className="dark-story-figure" aria-label="신부가 템버린을 흔들고 있는 모습">
           <img
             className="dark-story-image"
-            src="/src/assets/images/dark/DSC03561.jpg"
+            src="/images/dark/DSC03561.jpg"
             alt="템버린을 신나게 흔드는 신부"
             loading="lazy"
           />
@@ -242,7 +242,7 @@ export function DarkStorySection() {
         <figure className="dark-story-figure" aria-label="함께한 시간들">
           <img
             className="dark-story-image"
-            src="/src/assets/images/dark/DSC03698.jpg"
+            src="/images/dark/DSC03698.jpg"
             alt="함께한 시간들"
             loading="lazy"
           />
@@ -280,7 +280,7 @@ export function DarkStorySection() {
         <figure className="dark-story-figure" aria-label="드럼과 함께">
           <img
             className="dark-story-image"
-            src="/src/assets/images/dark/DSC03845-2.jpg"
+            src="/images/dark/DSC03845-2.jpg"
             alt="드럼과 함께한 순간"
             loading="lazy"
           />

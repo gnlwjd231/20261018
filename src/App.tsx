@@ -1,6 +1,6 @@
 import { Moon, Sun } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import darkPhoto from './assets/images/dark/DSC03682-favorite.jpg'
+const darkPhoto = '/images/dark/DSC03682-favorite.jpg'
 import BlurText from './components/BlurText'
 import LetterGlitch from './components/LetterGlitch'
 import { LightStorySection } from './components/story/LightStorySection'

@@ -183,13 +183,13 @@ figcaption,
   margin: 0;
   overflow: hidden;
   background: #EAE1D6;
+  display: flex;
+  justify-content: center;
 }
 
 .editorial-cover img {
-  width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
 }
 
 .editorial-cover figcaption {
