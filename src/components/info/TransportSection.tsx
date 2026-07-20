@@ -13,7 +13,7 @@ export function TransportSection({ mode }: TransportProps) {
         aria-label="교통편 안내"
       >
         <p className="dark-story-prompt">
-          <span className="dark-prompt-caret">$</span> ./transport --guide
+          <span className="dark-prompt-caret">$</span> ./transport --guide --guide
         </p>
 
         {/* 단계별 안내 */}
