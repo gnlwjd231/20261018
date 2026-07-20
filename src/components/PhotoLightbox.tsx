@@ -78,9 +78,10 @@ export default function PhotoLightbox({ images, thumbnails, initialIndex, onClos
     offsetRef.current = filmOffset
     setDragging(true)
 
-    const onMove = (ev: PointerEvent) => {
-      const dx = ev.clientX - lastXRef.current
-      lastXRef.current = ev.clientX
+    const onMove = (ev: Event) => {
+      const e = ev as PointerEvent
+      const dx = e.clientX - lastXRef.current
+      lastXRef.current = e.clientX
       const cw = wrapRef.current?.clientWidth ?? 400
       const ca = (cw - SLOT_W) / 2
       const minOff = ca - (images.length - 1) * SLOT_W
@@ -91,8 +92,8 @@ export default function PhotoLightbox({ images, thumbnails, initialIndex, onClos
     }
 
     const onUp = () => {
-      el.removeEventListener('pointermove', onMove)
-      el.removeEventListener('pointerup', onUp)
+      el.removeEventListener('pointermove', onMove as EventListener)
+      el.removeEventListener('pointerup', onUp as EventListener)
       setDragging(false)
       const cw = wrapRef.current?.clientWidth ?? 400
       const ca = (cw - SLOT_W) / 2
@@ -104,8 +105,8 @@ export default function PhotoLightbox({ images, thumbnails, initialIndex, onClos
       setIndex(si)
     }
 
-    el.addEventListener('pointermove', onMove)
-    el.addEventListener('pointerup', onUp)
+    el.addEventListener('pointermove', onMove as EventListener)
+    el.addEventListener('pointerup', onUp as EventListener)
   }, [filmOffset, images.length])
 
   return (

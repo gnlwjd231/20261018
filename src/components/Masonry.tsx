@@ -117,7 +117,7 @@ export default function Masonry({
     let direction = animateFrom
 
     if (animateFrom === 'random') {
-      const directions: typeof animateFrom[] = ['top', 'bottom', 'left', 'right']
+      const directions: ('top' | 'bottom' | 'left' | 'right')[] = ['top', 'bottom', 'left', 'right']
       direction = directions[Math.floor(Math.random() * directions.length)]
     }
 
