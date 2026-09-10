@@ -11,10 +11,6 @@ const SITE = 'https://261018.vercel.app'
 const DATE_VENUE = '2026년 10월 18일 일요일 오전 11시 · 서울대학교 교수회관'
 
 const PAGES = [
-  { slug: 'bride-family', desc: `가족이 되는 날, 함께해 주세요. ${DATE_VENUE}`, img: 'og-image.jpg' },
-  { slug: 'groom-family', desc: `가족이 되는 날, 함께해 주세요. ${DATE_VENUE}`, img: 'og-image.jpg' },
-  { slug: 'bride-formal', desc: `저희 두 사람이 부부의 연을 맺습니다. 바쁘시더라도 참석하시어 축복해 주시면 감사하겠습니다. ${DATE_VENUE}`, img: 'og-image.jpg' },
-  { slug: 'groom-formal', desc: `저희 두 사람이 부부의 연을 맺습니다. 바쁘시더라도 참석하시어 축복해 주시면 감사하겠습니다. ${DATE_VENUE}`, img: 'og-image.jpg' },
   { slug: 'bride-friends', desc: '우리 두 사람 평생 재미있게 잘 살겠습니다. 기쁜 날 함께 모여 축하해주세요!', img: 'og-image-dark.jpg' },
   { slug: 'groom-friends', desc: '우리 두 사람 평생 재미있게 잘 살겠습니다. 기쁜 날 함께 모여 축하해주세요!', img: 'og-image-dark.jpg' },
 ]
