@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-const lightPhoto = '/images/light/favorite.jpg'
+const lightPhoto = '/images/light/opt/favorite.webp'
 import BlurText from '@/components/BlurText'
 import Masonry from '@/components/Masonry'
 import PhotoLightbox from '@/components/PhotoLightbox'
@@ -13,36 +13,24 @@ const TOTAL_PAGES = 3
 const optPath = (p: string) => p.replace(/\.jpg$/, '.webp').replace(/\/(light|dark)\//, '/$1/opt/')
 const thumbPath = (p: string) => p.replace(/\.jpg$/, '.webp').replace(/\/(light|dark)\//, '/$1/thumb/')
 
+const picNum = (p: string) => parseInt(p.match(/DSC0*(\d+)/)?.[1] ?? '0', 10)
+
 const masonryItems = [
-  { id: 'm1', img: '/images/dark/DSC03633_(3).jpg' },
-  { id: 'm2', img: '/images/light/DSC02075.jpg' },
-  { id: 'm3', img: '/images/light/DSC01886.jpg' },
-  { id: 'm4', img: '/images/dark/DSC03561.jpg' },
-  { id: 'm5', img: '/images/light/DSC02774.jpg' },
-  { id: 'm6', img: '/images/light/DSC02427.jpg' },
-  { id: 'm7', img: '/images/dark/DSC03410.jpg' },
-  { id: 'm8', img: '/images/light/DSC02529.jpg' },
-  { id: 'm9', img: '/images/light/DSC01766.jpg' },
-  { id: 'm10', img: '/images/dark/DSC03992.jpg' },
-  { id: 'm11', img: '/images/light/DSC02069.jpg' },
-  { id: 'm12', img: '/images/light/DSC01640.jpg' },
-  { id: 'm13', img: '/images/dark/DSC03698.jpg' },
-  { id: 'm14', img: '/images/light/DSC01722.jpg' },
-  { id: 'm15', img: '/images/light/DSC01937.jpg' },
-  { id: 'm16', img: '/images/dark/DSC03775-2.jpg' },
-  { id: 'm17', img: '/images/light/DSC02481.jpg' },
-  { id: 'm18', img: '/images/light/DSC02942.jpg' },
-  { id: 'm19', img: '/images/dark/DSC03496.jpg' },
-  { id: 'm20', img: '/images/light/DSC02023.jpg' },
-  { id: 'm21', img: '/images/light/DSC01974.jpg' },
-  { id: 'm22', img: '/images/dark/DSC03845-2.jpg' },
-  { id: 'm23', img: '/images/light/DSC02527.jpg' },
-  { id: 'm24', img: '/images/light/DSC01877.jpg' },
-  { id: 'm25', img: '/images/dark/DSC03263.jpg' },
-  { id: 'm26', img: '/images/light/DSC02071.jpg' },
-  { id: 'm27', img: '/images/dark/DSC03620.jpg' },
-  { id: 'm28', img: '/images/dark/DSC03275.jpg' },
+  { id: 'm12', img: '/images/light/DSC01640.jpg', ar: 2667 / 4000 },
+  { id: 'm9', img: '/images/light/DSC01766.jpg', ar: 2667 / 4000 },
+  { id: 'm3', img: '/images/light/DSC01886.jpg', ar: 2667 / 4000 },
+  { id: 'm20', img: '/images/light/DSC02023.jpg', ar: 2667 / 4000 },
+  { id: 'm26', img: '/images/light/DSC02071.jpg', ar: 4000 / 2667 },
+  { id: 'm2', img: '/images/light/DSC02075.jpg', ar: 4000 / 2667 },
+  { id: 'm6', img: '/images/light/DSC02427.jpg', ar: 2667 / 4000 },
+  { id: 'm23', img: '/images/light/DSC02527.jpg', ar: 2667 / 4000 },
+  { id: 'm5', img: '/images/light/DSC02774.jpg', ar: 2667 / 4000 },
+  { id: 'm29', img: '/images/light/DSC02840.jpg', ar: 2667 / 4000 },
+  { id: 'm18', img: '/images/light/DSC02942.jpg', ar: 4000 / 2667 },
 ].map(i => ({ ...i, img: optPath(i.img) }))
+  // ponytail: 파일명 숫자순 정렬 — 사진 추가해도 순서 신경 쓸 필요 없음
+  .sort((a, b) => picNum(a.img) - picNum(b.img))
+  .map((item, i) => ({ ...item, id: `p${i + 1}` }))
 
 const masonryImages = masonryItems.map(i => i.img)
 const masonryThumbnails = masonryItems.map(i => thumbPath(i.img.replace('/opt/', '/')))
@@ -117,7 +105,8 @@ export function LightStorySection() {
             <div className="light-episode-copy">
               <p className="light-episode-body">오랜 시간 서로의 곁을 지키며</p>
               <p className="light-episode-body">함께한 날들을 차곡차곡 쌓아왔습니다.</p>
-              <p className="light-episode-body">이제 저희 두 사람, 부부로서 새로운 길을 함께 걸어가려 합니다.</p>
+              <p className="light-episode-body">우리 두사람 평생 재미있게 잘 살겠습니다.</p>
+              <p className="light-episode-body">기쁜 날 함께 모여 축하해주세요.</p>
             </div>
           </div>
         </div>

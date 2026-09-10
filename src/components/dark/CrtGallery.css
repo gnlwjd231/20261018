@@ -1,0 +1,101 @@
+/* CRT gallery: first section only, ~100svh, normal document flow */
+.crt-gallery {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  background: #000;
+  overflow: hidden;
+}
+
+.crt-screen {
+  position: absolute;
+  inset: 0;
+}
+
+.crt-screen canvas {
+  touch-action: pan-y;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* camcorder OSD: small off-white, subtle shadow, no chrome */
+.crt-osd {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: 'IBM Plex Mono', 'Geist Mono', SFMono-Regular, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(245, 243, 235, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  transition: opacity 0.4s ease;
+}
+
+.crt-osd--dim {
+  opacity: 0.25;
+}
+
+.crt-osd--tl { position: absolute; top: 14px; left: 14px; }
+.crt-osd--tr { position: absolute; top: 14px; right: 14px; }
+.crt-osd--bl { position: absolute; bottom: 16px; left: 14px; }
+.crt-osd--br { position: absolute; bottom: 16px; right: 14px; }
+
+.crt-tap-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 72px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  font-family: 'IBM Plex Mono', 'Geist Mono', SFMono-Regular, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(245, 243, 235, 0.75);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  animation: crt-hint-blink 1.6s ease-in-out infinite;
+}
+
+@keyframes crt-hint-blink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.85; }
+}
+
+.crt-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* no-WebGL fallback */
+.crt-fallback {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+.crt-fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.crt-tapzone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.crt-tapzone--l { left: 0; }
+.crt-tapzone--r { right: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-tap-hint { animation: none; opacity: 0.7; }
+  .crt-osd { transition: none; }
+}

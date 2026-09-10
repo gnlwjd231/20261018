@@ -6,6 +6,7 @@ export const WEDDING_DATE_TIME = new Date('2026-10-18T11:00:00+09:00')
 
 /** 표시용 일시 문자열 */
 export const WEDDING_DATE_DISPLAY = '2026년 10월 18일 일요일 오전 11시'
+export const WEDDING_DATE_DISPLAY_EN = 'Sunday, October 18, 2026 at 11:00 AM'
 export const WEDDING_DATE_SHORT = '2026.10.18 SUN 11:00'
 
 /** 장소 정보 */
@@ -13,6 +14,7 @@ export const VENUE = {
   name: '서울대학교 교수회관',
   nameEn: 'SNU Faculty Club',
   address: '서울특별시 관악구 관악로 1 서울대학교 내 65동',
+  addressEn: '1 Gwanak-ro, Gwanak-gu, Seoul — Bldg 65, Seoul National University',
   addressShort: '서울대학교 교수회관',
   /** 카카오맵 좌표 (서울대학교 교수회관) */
   lat: 37.4600,
@@ -52,7 +54,9 @@ export const TRANSPORT = {
   },
   car: {
     parking: '무료 (주차 자유)',
+    parkingEn: 'Free (parking available)',
     naviKeyword: '서울대학교 교수회관',
+    naviKeywordEn: 'SNU Faculty Club',
   },
   steps: [
     '2호선 낙성대역 4번 출구로 나옵니다.',
@@ -61,5 +65,13 @@ export const TRANSPORT = {
     '⚠ 서울대 진입 전 "호암교수회관"에서 절대 내리지 마세요.',
     '서울대학교 진입 이후, "공동기기원(교수회관)"에서 하차합니다.',
     '하차 후 교통안내판을 따라 약 200m 걸으면 교수회관에 도착합니다.',
+  ],
+  stepsEn: [
+    'Take Line 2 to Nakseongdae Station, Exit 4.',
+    'Right after Exit 4 (10m), turn right past the GS Caltex gas station.',
+    'Board Gwanak 02-1 at the "Gwanak 02" stop right after the turn.',
+    '⚠ Do NOT get off at "Hoam Faculty House" before entering SNU.',
+    'After entering SNU, get off at "Joint Equipment Center (Faculty Club)".',
+    'Walk ~200m following the signs to the Faculty Club.',
   ],
 } as const

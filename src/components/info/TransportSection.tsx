@@ -10,15 +10,15 @@ export function TransportSection({ mode }: TransportProps) {
     return (
       <section
         className="dark-transport-section"
-        aria-label="교통편 안내"
+        aria-label="Getting here"
       >
         <p className="dark-story-prompt">
           <span className="dark-prompt-caret">$</span> ./transport --guide --guide
         </p>
 
         {/* 단계별 안내 */}
-        <ol className="dark-transport-steps" aria-label="교통편 단계별 안내">
-          {TRANSPORT.steps.map((step, i) => (
+        <ol className="dark-transport-steps" aria-label="Step-by-step directions">
+          {TRANSPORT.stepsEn.map((step, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: static
             <li key={i} className={`dark-transport-step${step.startsWith('⚠') ? ' dark-transport-step--warn' : ''}`}>
               <span className="dark-step-num">{String(i + 1).padStart(2, '0')}.</span>
@@ -32,10 +32,10 @@ export function TransportSection({ mode }: TransportProps) {
           <p className="dark-story-prompt">
             <span className="dark-prompt-caret">$</span> ./transport --parking
           </p>
-          <p className="dark-story-comment">{'// '}{TRANSPORT.car.parking}</p>
+          <p className="dark-story-comment">{'// '}{TRANSPORT.car.parkingEn}</p>
           <p className="dark-story-comment">
             {'// navi: "'}
-            <span className="dark-navi-keyword">{TRANSPORT.car.naviKeyword}</span>
+            <span className="dark-navi-keyword">{TRANSPORT.car.naviKeywordEn}</span>
             {'"'}
           </p>
         </div>

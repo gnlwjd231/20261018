@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-SRC_DIR="src/assets/images"
+SRC_DIR="public/images"
 
 for dir in light dark; do
   mkdir -p "$SRC_DIR/$dir/opt" "$SRC_DIR/$dir/thumb"

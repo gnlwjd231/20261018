@@ -1,0 +1,294 @@
+Create a mobile-first photo archive using Three.js, where the entire phone viewport behaves like an old CRT television screen.
+
+Do NOT render or model a physical television.
+
+The user's phone itself should feel like the CRT display.
+
+The experience should resemble watching old personal photographs and home videos through an early-2000s television or camcorder monitor.
+
+Use Three.js primarily for a full-screen custom ShaderMaterial, not for a 3D scene.
+
+Implement the display using:
+
+OrthographicCamera
+full-screen PlaneGeometry
+custom ShaderMaterial
+dynamically loaded photo textures
+
+The CRT shader should include only subtle effects:
+
+slight barrel distortion
+curved / softened screen edges
+faint scanlines
+analog grain
+subtle luminance flicker
+very slight RGB separation
+vignette
+occasional horizontal instability
+slight chromatic softness
+
+The photograph must remain the dominant visual element.
+
+The desired priority is:
+
+beautiful photograph → analog screen texture → CRT effect
+
+Never make the effect look like glitch art.
+
+Layout
+
+The photograph should occupy almost the entire mobile viewport.
+
+Avoid large frames, decorative device mockups, cards, borders, or fake television bodies.
+
+The interface should feel extremely minimal.
+
+Overlay small camcorder / television OSD typography directly over the photograph:
+
+PLAY ▶
+CH 03
+
+2009.08.21
+SP
+
+Use small off-white text with a very subtle shadow.
+
+Do not use modern UI components, glassmorphism, pills, cards, carousel dots, large buttons, or navigation bars.
+
+Navigation
+
+Swipe left or right to move between photographs.
+
+Do not use standard sliding carousel animation.
+
+Every photograph should behave like a television channel.
+
+Transition sequence:
+
+current image
+→ slight horizontal compression/distortion
+→ 100–180 ms analog static
+→ next image appears
+→ CRT stabilizes
+
+Keep the entire transition short and tactile.
+
+Tapping the right side of the screen advances to the next photograph.
+Tapping the left side goes back.
+
+Initial experience
+
+On first load, display a black CRT screen.
+
+After the user's first tap:
+
+black
+→ bright horizontal line
+→ line expands vertically
+→ brief analog static
+→ first photograph
+
+Recreate the characteristic CRT power-on animation.
+
+Do not show an artificial power button.
+
+Photograph presentation
+
+Preserve the original aspect ratio of each photograph whenever possible.
+
+Portrait photographs should work naturally on portrait mobile screens.
+
+Landscape photographs may be letterboxed rather than aggressively cropped.
+
+The empty area should be dark and visually blend into the CRT display.
+
+Older low-resolution images should not be artificially sharpened. Their imperfections are part of the aesthetic.
+
+Interaction details
+
+On press-and-hold, temporarily reduce scanlines, noise, distortion and OSD opacity so the user can inspect the original photograph more clearly.
+
+When released, smoothly restore the CRT treatment.
+
+Optional subtle feedback:
+
+a tiny screen brightness pulse when changing channels
+slight static audio after user interaction
+subtle haptic feedback on supported mobile devices
+
+Audio must remain muted until the user explicitly interacts with the page.
+
+Art direction
+
+Avoid:
+
+cyber Y2K
+vaporwave
+neon
+VHS glitch overload
+retro game UI
+pixel-art aesthetics
+fake Windows 98 UI
+physical TV mockups
+
+Instead reference:
+
+Korean home videos from the late 1990s and early 2000s
+family camcorder footage
+old digital camera photographs
+analog television broadcasts
+personal memory archives
+
+The visual tone should be intimate, quiet, imperfect and nostalgic.
+
+It should feel as though old memories are being broadcast directly through the user's phone.
+
+Performance
+
+Optimize aggressively for mobile Safari and Chrome.
+
+Cap device pixel ratio around 1.5–2.
+
+Preload only the current, previous and next photograph.
+
+Dispose unused textures.
+
+Use compressed WebP or AVIF images.
+
+Pause shader animation when the page is hidden.
+
+Respect prefers-reduced-motion.
+
+Avoid expensive post-processing unless absolutely necessary.
+
+The end result should not look like a website themed around an old television.
+
+It should feel like the phone itself has temporarily become an old screen containing someone's memories.
+
+
+
+
+Page structure and gesture behavior
+
+The Three.js CRT photo gallery is only the first section of the page, not the entire website.
+
+Structure the page like:
+
+┌──────────────────────────┐
+│                          │
+│    Three.js CRT Gallery  │  ← approximately 100svh
+│                          │
+│   ← swipe photos →       │
+│                          │
+└──────────────────────────┘
+             ↓
+       normal page scroll
+             ↓
+┌──────────────────────────┐
+│ Existing DOM content     │
+│ wedding information      │
+│ text / sections / etc.   │
+└──────────────────────────┘
+
+The Three.js canvas must participate in the normal document flow.
+
+Do not create a full-page fixed canvas that blocks scrolling.
+
+The gallery section should be around 100svh, followed immediately by the existing HTML/DOM sections.
+
+Gesture rules
+
+Horizontal swipe:
+
+swipe left  → next photo
+swipe right → previous photo
+
+Vertical swipe:
+
+swipe up/down → normal browser page scroll
+
+This distinction is extremely important.
+
+The gallery must never trap the user inside the Three.js area.
+
+Do not call preventDefault() globally on touch events.
+
+Use CSS similar to:
+
+canvas {
+  touch-action: pan-y;
+}
+
+This allows the browser to retain native vertical scrolling while the app interprets horizontal gestures.
+
+Gesture detection
+
+Determine gesture direction only after the pointer has moved past a small threshold.
+
+Example logic:
+
+dx = currentX - startX
+dy = currentY - startY
+
+if abs(dx) > threshold
+   and abs(dx) > abs(dy) * 1.2:
+       horizontal gesture
+
+otherwise:
+       allow normal vertical scrolling
+
+Use a swipe threshold of approximately 30–50px.
+
+Do not change photographs for small accidental horizontal movement while the user is scrolling vertically.
+
+Once a gesture has clearly been classified as vertical, Three.js should stop processing that pointer gesture entirely.
+
+Important mobile UX
+
+The user should be able to place their finger anywhere over the photograph and naturally scroll downward into the next page section.
+
+They should not need to search for a special scroll area outside the canvas.
+
+On a diagonal gesture, prioritize vertical page scrolling unless horizontal intention is obvious.
+
+In other words:
+
+vertical scrolling has priority over photo navigation.
+
+Horizontal photo navigation should only activate when the gesture is clearly horizontal.
+
+Do not implement vertical swipe gestures inside the gallery.
+
+Transition behavior
+
+When a horizontal swipe is accepted:
+
+user drags horizontally
+→ current photograph reacts very slightly
+→ finger releases
+→ brief CRT horizontal distortion/static
+→ next or previous photograph
+
+Do not physically slide the whole photograph across the screen like a conventional carousel.
+
+The user's swipe is an input gesture, but the visual transition should still resemble changing a television channel.
+
+A very small horizontal displacement while dragging is acceptable, but once the threshold is reached the actual transition should be CRT distortion/static rather than a carousel slide.
+
+Scroll transition into the next section
+
+As the gallery approaches the bottom of the viewport, do not add a special Three.js transition.
+
+Let the Three.js scene naturally move upward with the document as the user scrolls.
+
+The next DOM section should simply enter from below through normal native scrolling.
+
+Avoid:
+
+scroll hijacking
+scroll snapping
+pinned canvas sections
+forced full-screen transitions
+GSAP-style scroll-controlled scene changes
+
+This should feel like a normal mobile webpage whose first section happens to contain an unusual interactive CRT photo viewer.

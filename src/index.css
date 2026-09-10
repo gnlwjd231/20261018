@@ -10,7 +10,7 @@
   --accent: #8C7B6E;
   --accent-hover: #736458;
   --border-color: #E2DDD5;
-  --font-heading: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-heading: 'Instrument Serif', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', serif;
   --font-body: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   --font-caption: 'IBM Plex Mono', 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
   --toast-bg: rgba(42, 42, 42, 0.9);
@@ -20,8 +20,8 @@
 
 [data-theme='dark'] {
   /* Retro Computing (Dark Mode) */
-  --bg-primary: #0D0E15;
-  --bg-secondary: #161824;
+  --bg-primary: #000;
+  --bg-secondary: #000;
   --text-primary: #00FF66; /* Terminal Green */
   --text-secondary: #8892B0; /* Cool Gray */
   --accent: #FF3366; /* Cyberpunk Pink */
@@ -293,7 +293,7 @@ figcaption,
   position: relative;
   min-height: 100dvh;
   padding: 0;
-  background: #0D0E15;
+  background: #000;
   color: #00FF66;
 }
 
@@ -319,11 +319,8 @@ figcaption,
 .terminal-frame {
   margin: 12px;
   min-height: calc(100dvh - 24px);
-  border: 1px solid rgba(0, 255, 102, 0.46);
-  background: rgba(8, 10, 16, 0.9);
-  box-shadow:
-    inset 0 0 40px rgba(0, 255, 102, 0.07),
-    0 0 36px rgba(0, 255, 102, 0.12);
+  border: none;
+  background: transparent;
 }
 
 .terminal-bar {
@@ -437,6 +434,26 @@ figcaption,
 
 .story-revealed {
   animation: story-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ponytail: 터미널처럼 한 줄씩 — 슬라이드 없이 빠르게 페이드 */
+.dark-story-section .dark-line.story-hidden {
+  opacity: 0;
+  transform: none;
+}
+
+.dark-story-section .dark-line.story-revealed {
+  animation: dark-line-in 0.25s ease-out both;
+}
+
+@keyframes dark-line-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* ============================================================
@@ -644,13 +661,26 @@ figcaption,
 }
 
 .dark-story-block {
-  border: 1px solid rgba(0, 255, 102, 0.28);
-  background: rgba(8, 10, 16, 0.7);
+  border: none;
+  background: transparent;
   padding: 18px 16px;
 }
 
+.dark-story-photo-full {
+  padding: 0;
+  overflow: hidden;
+}
+
+.dark-story-photo-full .dark-story-image {
+  border: none;
+}
+
+.dark-story-photo-full .dark-story-caption {
+  padding: 8px 12px 10px;
+}
+
 .dark-story-boot {
-  border-color: rgba(0, 255, 102, 0.18);
+  border: none;
 }
 
 .dark-story-prompt {
@@ -709,7 +739,7 @@ figcaption,
   width: 100%;
   height: auto;
   display: block;
-  filter: grayscale(0.6) contrast(1.15) brightness(0.85);
+  filter: none;
   border: 1px solid var(--border-color);
 }
 
@@ -828,11 +858,16 @@ figcaption,
 .dark-story-output {
   margin-top: 14px;
   padding: 12px 10px;
-  border: 1px solid rgba(0, 255, 102, 0.18);
-  background: rgba(0, 255, 102, 0.04);
+  border: none;
+  background: transparent;
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+/* 결과는 항상 렌더하고 visibility로만 숨김 — 나타나기 전부터 높이 차지 */
+.dark-result--pending {
+  visibility: hidden;
 }
 
 .dark-output-line {
@@ -888,6 +923,13 @@ figcaption,
   }
 
   .story-revealed {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .dark-story-section .dark-line.story-hidden,
+  .dark-story-section .dark-line.story-revealed {
     animation: none;
     opacity: 1;
     transform: none;
@@ -2335,7 +2377,7 @@ figcaption,
 }
 
 .admin-login-title {
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Instrument Serif', 'Pretendard', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   color: #2A2A2A;
@@ -2433,7 +2475,7 @@ figcaption,
 }
 
 .admin-header-title {
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Instrument Serif', 'Pretendard', sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
   margin: 0;

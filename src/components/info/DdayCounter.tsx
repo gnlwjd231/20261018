@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { WEDDING_DATE_TIME, WEDDING_DATE_DISPLAY, MAP_LINKS } from '@/data/weddingInfo'
+import { WEDDING_DATE_TIME, WEDDING_DATE_DISPLAY, WEDDING_DATE_DISPLAY_EN, MAP_LINKS } from '@/data/weddingInfo'
 
 function getDday(): number {
   const now = new Date()
@@ -40,23 +40,29 @@ export function DdayCounter({ mode }: DdayCounterProps) {
         : `결혼식이 ${Math.abs(dday)}일 지났습니다`
 
   if (mode === 'dark') {
+    const ddayMessageEn =
+      dday > 0
+        ? `${dday} days to go`
+        : dday === 0
+          ? 'Today is the wedding day!'
+          : `${Math.abs(dday)} days since the wedding`
     return (
-      <div className="dark-dday" aria-label={`결혼식 디데이: ${ddayLabel}`}>
+      <div className="dark-dday" aria-label={`Wedding D-day: ${ddayLabel}`}>
         <p className="dark-story-prompt">
           <span className="dark-prompt-caret">$</span> date --wedding
         </p>
         <div className="dark-dday-display">
           <span className="dark-dday-number">{ddayLabel}</span>
-          <span className="dark-dday-date">{WEDDING_DATE_DISPLAY}</span>
+          <span className="dark-dday-date">{WEDDING_DATE_DISPLAY_EN}</span>
         </div>
-        <p className="dark-dday-msg dark-story-comment">{'// '}{ddayMessage}</p>
+        <p className="dark-dday-msg dark-story-comment">{'// '}{ddayMessageEn}</p>
         <div className="dday-calendar-links">
           <a
             href={MAP_LINKS.googleCalendar}
             target="_blank"
             rel="noopener noreferrer"
             className="dark-cal-link"
-            aria-label="구글 캘린더에 일정 추가"
+            aria-label="Add to Google Calendar"
           >
             [Google Calendar]
           </a>
@@ -64,7 +70,7 @@ export function DdayCounter({ mode }: DdayCounterProps) {
             href="#"
             onClick={handleIcs}
             className="dark-cal-link"
-            aria-label="애플 캘린더에 일정 추가"
+            aria-label="Add to Apple Calendar"
           >
             [Apple Calendar]
           </a>

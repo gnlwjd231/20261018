@@ -1,17 +1,25 @@
-.masonry-cols {
-  columns: 2;
-  column-gap: 12px;
+.masonry-flex {
+  display: flex;
+  gap: 12px;
   padding: 12px;
+  align-items: flex-start;
+}
+
+.masonry-flex-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .masonry-cell {
   display: block;
   width: 100%;
-  margin: 0 0 12px;
+  margin: 0;
   padding: 0;
   border: 0;
   background: none;
-  break-inside: avoid;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;

@@ -60,7 +60,7 @@ export function KakaoMap({ mode }: KakaoMapProps) {
 
   const copyAddress = async () => {
     try {
-      await navigator.clipboard.writeText(VENUE.address)
+      await navigator.clipboard.writeText(mode === 'dark' ? VENUE.addressEn : VENUE.address)
       setCopied(true)
       showToast()
       setTimeout(() => setCopied(false), 2000)
@@ -81,15 +81,15 @@ export function KakaoMap({ mode }: KakaoMapProps) {
         role="button"
         tabIndex={0}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleAddressClick() }}
-        aria-label="주소 복사"
+        aria-label={mode === 'dark' ? 'Copy address' : '주소 복사'}
       >
-        {VENUE.address}
+        {mode === 'dark' ? VENUE.addressEn : VENUE.address}
       </p>
       <button
         type="button"
         className={`map-copy-btn map-copy-btn--${mode}`}
         onClick={(e) => { e.stopPropagation(); copyAddress() }}
-        aria-label="주소 복사"
+        aria-label={mode === 'dark' ? 'Copy address' : '주소 복사'}
       >
         {copied ? <Check size={13} /> : <Copy size={13} />}
       </button>
@@ -123,57 +123,57 @@ export function KakaoMap({ mode }: KakaoMapProps) {
   }, [loaded])
 
   const mapLinks = (
-    <div className={`map-app-links map-app-links--${mode}`} aria-label="지도 앱으로 열기">
+    <div className={`map-app-links map-app-links--${mode}`} aria-label={mode === 'dark' ? 'Open in map apps' : '지도 앱으로 열기'}>
       <a
         href={KAKAO_KEY ? MAP_LINKS.kakao : MAP_LINKS.kakaoWeb}
         className={`map-app-btn map-app-btn--kakao map-app-btn--${mode}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="카카오맵에서 길찾기"
+        aria-label={mode === 'dark' ? 'Get directions in KakaoMap' : '카카오맵에서 길찾기'}
       >
-        카카오맵
+        {mode === 'dark' ? 'KakaoMap' : '카카오맵'}
       </a>
       <a
         href={MAP_LINKS.naverWeb}
         className={`map-app-btn map-app-btn--naver map-app-btn--${mode}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="네이버 지도에서 길찾기"
+        aria-label={mode === 'dark' ? 'Get directions in Naver Map' : '네이버 지도에서 길찾기'}
       >
-        네이버 지도
+        {mode === 'dark' ? 'Naver Map' : '네이버 지도'}
       </a>
       <a
         href={MAP_LINKS.tmap}
         className={`map-app-btn map-app-btn--tmap map-app-btn--${mode}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="티맵에서 길찾기"
+        aria-label={mode === 'dark' ? 'Get directions in Tmap' : '티맵에서 길찾기'}
       >
-        티맵
+        {mode === 'dark' ? 'Tmap' : '티맵'}
       </a>
     </div>
   )
 
   // API 키 없거나 로드 실패 시 fallback
   const mapContent = !KAKAO_KEY || error ? (
-    <div className={`map-fallback map-fallback--${mode}`} aria-label="예식장 위치 정보">
+    <div className={`map-fallback map-fallback--${mode}`} aria-label={mode === 'dark' ? 'Venue location' : '예식장 위치 정보'}>
       <div className={`map-fallback-card map-fallback-card--${mode}`}>
-        <p className={`map-venue-name map-venue-name--${mode}`}>{VENUE.name}</p>
+        <p className={`map-venue-name map-venue-name--${mode}`}>{mode === 'dark' ? VENUE.nameEn : VENUE.name}</p>
         {addressLine}
       </div>
       {mapLinks}
     </div>
   ) : (
-    <div className={`map-container map-container--${mode}`} aria-label="예식장 카카오맵">
+    <div className={`map-container map-container--${mode}`} aria-label={mode === 'dark' ? 'Venue map' : '예식장 카카오맵'}>
       <div
         ref={mapRef}
         className="kakao-map"
         role="application"
-        aria-label={`${VENUE.name} 위치 지도`}
+        aria-label={`${mode === 'dark' ? VENUE.nameEn : VENUE.name} map`}
         style={{ width: '100%', height: '240px' }}
       />
       <div className={`map-venue-info map-venue-info--${mode}`}>
-        <p className={`map-venue-name map-venue-name--${mode}`}>{VENUE.name}</p>
+        <p className={`map-venue-name map-venue-name--${mode}`}>{mode === 'dark' ? VENUE.nameEn : VENUE.name}</p>
         {addressLine}
       </div>
       {mapLinks}
@@ -184,7 +184,7 @@ export function KakaoMap({ mode }: KakaoMapProps) {
     <>
       {mapContent}
       {toast && createPortal(
-        <div className={`map-toast map-toast--${mode}`} role="status">주소가 복사되었습니다</div>,
+        <div className={`map-toast map-toast--${mode}`} role="status">{mode === 'dark' ? 'Address copied' : '주소가 복사되었습니다'}</div>,
         document.body,
       )}
     </>

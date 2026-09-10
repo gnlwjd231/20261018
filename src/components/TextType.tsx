@@ -71,6 +71,7 @@ const TextType = ({
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
 
+    // ponytail: 엣지 진입이 아니라 화면 중앙 밴드에 들어올 때 시작
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -79,7 +80,7 @@ const TextType = ({
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: '-45% 0px -45% 0px' }
     );
 
     observer.observe(containerRef.current);
@@ -137,7 +138,12 @@ const TextType = ({
             variableSpeed ? getRandomSpeed() : typingSpeed
           );
         } else if (textArray.length >= 1) {
-          if (!loop && currentTextIndex === textArray.length - 1) return;
+          if (!loop && currentTextIndex === textArray.length - 1) {
+            if (onSentenceComplete) {
+              onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
+            }
+            return;
+          }
           timeout = setTimeout(() => {
             setIsDeleting(true);
           }, pauseDuration);

@@ -1,13 +1,12 @@
 import { Moon, Sun } from 'lucide-react'
-import { useEffect, useState } from 'react'
-const darkPhoto = '/images/dark/DSC03682-favorite.jpg'
-import BlurText from './components/BlurText'
-import LetterGlitch from './components/LetterGlitch'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { LightStorySection } from './components/story/LightStorySection'
 import { DarkStorySection } from './components/story/DarkStorySection'
 import { LightInfoSection } from './components/info/LightInfoSection'
 import { DarkInfoSection } from './components/info/DarkInfoSection'
 import { LightSectionNav } from './components/light/LightSectionNav'
+// ponytail: three.js only loads when dark mode opens
+const CrtGallery = lazy(() => import('./components/dark/CrtGallery').then((m) => ({ default: m.CrtGallery })))
 import { GuestbookSection } from './components/guestbook/GuestbookSection'
 import CircularText from './components/CircularText'
 import { FadeIn } from './components/ui/FadeIn'
@@ -16,7 +15,6 @@ type Mode = 'light' | 'dark'
 
 const defaultMode: Mode = 'light'
 const modeStorageKey = 'wedding-mode'
-const weddingDate = '2026.10.18 SUN 11:00'
 
 function App() {
   const [mode, setMode] = useState<Mode>(() => {
@@ -38,6 +36,7 @@ function App() {
     setIsSwitching(true)
     window.setTimeout(() => {
       setMode(nextMode)
+      if (nextMode === 'dark') window.scrollTo(0, 0)
       window.setTimeout(() => setIsSwitching(false), 260)
     }, 180)
   }
@@ -90,50 +89,9 @@ function LightModePage() {
 function DarkModePage() {
   return (
     <section className="dark-page" aria-label="Dark mode invitation">
-      <div className="terminal-frame">
-        <div className="terminal-bar">
-          <span>guest@wedding:~</span>
-          <span>RUNNING</span>
-        </div>
-
-        <div className="terminal-grid">
-          <div className="terminal-copy">
-            <p className="dark-caption">Chapter 02 / boot sequence</p>
-            <div className="dark-title-glitch-wrap">
-              <div className="dark-glitch-canvas">
-                <LetterGlitch
-                  glitchColors={['#00FF66', '#FF3366', '#0D0E15']}
-                  glitchSpeed={50}
-                  centerVignette={false}
-                  outerVignette={true}
-                  smooth={true}
-                  characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*()_+-=[]{}|;:',.<>?/~\`0123456789"
-                />
-              </div>
-              <BlurText text="BOOT_SEQUENCE" className="dark-title dark-title-overlay" delay={38} animateBy="letters" />
-            </div>
-            <p className="dark-body">
-              &gt; loading 9 years of logs...
-              <br />
-              &gt; compiling one shared timeline...
-              <br />
-              &gt; status: wedding day scheduled
-            </p>
-          </div>
-
-          <figure className="crt-photo">
-            <img src={darkPhoto} alt="다크 모드 웨딩 사진" />
-          </figure>
-        </div>
-
-        <pre className="ascii-panel" aria-label="ASCII wedding marker">
-{`+--------------------------------+
-|  DATE ${weddingDate}  |
-|  VENUE SEOUL NATL. UNIV. HALL |
-|  MODE  ROCK / CODE / WEDDING  |
-+--------------------------------+`}
-        </pre>
-      </div>
+      <Suspense fallback={<section className="crt-gallery" aria-label="Photo archive" />}>
+        <CrtGallery />
+      </Suspense>
 
       <DarkStorySection />
       <DarkInfoSection />
