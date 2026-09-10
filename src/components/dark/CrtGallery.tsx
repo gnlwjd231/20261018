@@ -306,15 +306,18 @@ export function CrtGallery() {
       if (powered) return
       powered = true
       powerT0 = performance.now()
+      setOn(true)
       if (reduced) {
         uniforms.uPower.value = 1
-        setOn(true)
       }
       preload(index)
       navigator.vibrate?.(12)
     }
 
     apiRef.current = { go, power }
+
+    // ponytail: no tap-to-play gate — power on at mount
+    power()
 
     const resize = () => {
       const w = Math.max(host.clientWidth, 1)
@@ -453,7 +456,6 @@ export function CrtGallery() {
     let holdTimer = 0
     let held = false
     let pid = -1
-    let powerTap = false
 
     const clearHold = () => {
       window.clearTimeout(holdTimer)
@@ -465,11 +467,6 @@ export function CrtGallery() {
     }
 
     const onDown = (e: PointerEvent) => {
-      if (!powered) {
-        power()
-        powerTap = true
-        return
-      }
       resume() // loop may have paused while visible — never eat a tap
       if (tracking) {
         // stale gesture (shouldn't happen with window-level up/cancel) — reset
@@ -511,10 +508,6 @@ export function CrtGallery() {
     }
 
     const onUp = (e: PointerEvent) => {
-      if (powerTap) {
-        powerTap = false
-        return
-      }
       // NOTE: pointerup listens on window — releasing outside still ends the gesture,
       // otherwise tracking sticks and taps die ("photos don't advance")
       if (!powered || e.pointerId !== pid) return
