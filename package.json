@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/build-invite-pages.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "check:supabase": "node --env-file=.env scripts/check-supabase.mjs"

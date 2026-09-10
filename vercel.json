@@ -3,6 +3,30 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/bride-family",
+      "destination": "/bride-family/index.html"
+    },
+    {
+      "source": "/groom-family",
+      "destination": "/groom-family/index.html"
+    },
+    {
+      "source": "/bride-formal",
+      "destination": "/bride-formal/index.html"
+    },
+    {
+      "source": "/groom-formal",
+      "destination": "/groom-formal/index.html"
+    },
+    {
+      "source": "/bride-friends",
+      "destination": "/bride-friends/index.html"
+    },
+    {
+      "source": "/groom-friends",
+      "destination": "/groom-friends/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
