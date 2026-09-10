@@ -172,12 +172,13 @@ export function DarkStorySection() {
         </ul>
       </DarkBlock>
 
-      {/* 커플 ASCII 아트 */}
+      {/* 커플 ASCII 아트 — status 타이핑이 끝나면 탁 (높이는 미리 차지) */}
       <DarkBlock>
         <pre
-          className="dark-ascii-art dark-ascii-art--couple dark-line story-hidden"
+          className={`dark-ascii-art dark-ascii-art--couple${statusDone ? '' : ' dark-result--pending'}`}
           role="img"
           aria-label="ASCII 아트: 기계공학 박사(신랑)와 프론트엔드 개발자 PM(신부) 커플"
+          aria-hidden={!statusDone}
         >
           {COUPLE_ASCII}
         </pre>
