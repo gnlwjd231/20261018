@@ -12,7 +12,7 @@ const DATE_VENUE = '2026년 10월 18일 일요일 오전 11시 · 서울대학�
 
 const PAGES = [
   { slug: 'bride-friends', desc: '정아 공주 결혼해! 꼭 와줘잉 ~', img: 'og-image-dark.jpg' },
-  { slug: 'groom-friends', desc: '우리 두 사람 평생 재미있게 잘 살겠습니다. 기쁜 날 함께 모여 축하해주세요!', img: 'og-image-dark.jpg' },
+  { slug: 'groom-friends', desc: '안녕. 나 오키, 결혼식에 초대합니다.', img: 'og-image-dark.jpg' },
 ]
 
 const setContent = (html, key, value) =>
