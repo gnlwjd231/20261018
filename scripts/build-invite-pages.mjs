@@ -28,10 +28,10 @@ for (const page of PAGES) {
   html = setContent(html, 'property="og:url', `${SITE}/${page.slug}`)
   html = setContent(html, 'property="og:image', `${SITE}/${page.img}`)
   html = setContent(html, 'name="twitter:image', `${SITE}/${page.img}`)
-  // ponytail: JS-only redirect — scrapers read OG above, browsers bounce to /
+  // ponytail: 초대링크는 항상 light 진입 + / 로 이동 (scraper는 위 OG만 읽음)
   html = html.replace(
     '</head>',
-    `<link rel="canonical" href="${SITE}/" />\n<script>location.replace("/")</script>\n</head>`,
+    `<link rel="canonical" href="${SITE}/" />\n<script>try{localStorage.setItem("wedding-mode","light")}catch(e){}location.replace("/")</script>\n</head>`,
   )
   const dir = join(dist, page.slug)
   mkdirSync(dir, { recursive: true })
