@@ -3,12 +3,12 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/bride-friends",
-      "destination": "/bride-friends/index.html"
+      "source": "/hazel",
+      "destination": "/hazel/index.html"
     },
     {
-      "source": "/groom-friends",
-      "destination": "/groom-friends/index.html"
+      "source": "/okie",
+      "destination": "/okie/index.html"
     },
     {
       "source": "/(.*)",

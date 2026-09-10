@@ -11,8 +11,8 @@ const SITE = 'https://261018.vercel.app'
 const DATE_VENUE = '2026년 10월 18일 일요일 오전 11시 · 서울대학교 교수회관'
 
 const PAGES = [
-  { slug: 'bride-friends', desc: '정아 공주 결혼해! 꼭 와줘잉 ~', img: 'og-image-dark.jpg' },
-  { slug: 'groom-friends', desc: '안녕, 나 오키. 초미녀 신부를 얻었다. 후후후', img: 'og-image-dark.jpg' },
+  { slug: 'hazel', desc: '정아 공주 결혼해! 꼭 와줘잉 ~', img: 'og-image-dark.jpg' },
+  { slug: 'okie', desc: '안녕, 나 오키. 초미녀 신부를 얻었다. 후후후', img: 'og-image-dark.jpg' },
 ]
 
 const setContent = (html, key, value) =>
