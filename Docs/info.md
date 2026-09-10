@@ -1,7 +1,6 @@
 신랑이름 : 오기승 
 전화번호 : 010-2774-5201
-계좌번호 : -
-부모님과의 관계 : 차남
+계좌번호 :
 
 신랑 아버지 : 오병목
 전화번호 : 010-2774-5201
@@ -19,20 +18,24 @@
 전화번호 : 010-7190-3450
 계좌번호 : -
 
+신부 어머니: 안수현 전화번호 : 010-****-**** 계좌번호 : -
+
 ---
 
 신부
+
 - Frontend Engineer
 - Loves editorial design
 - Minimalism
 - Vintage aesthetics
 
 오기승
+
 - PhD in Mechanical Engineering
 - Drummer
 
-
 Story
+
 - Met through drum lessons.
 - Together for nine years.
 - Marriage is the beginning of a family.

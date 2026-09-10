@@ -1,23 +1,36 @@
-.list {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.masonry-cols {
+  columns: 2;
+  column-gap: 12px;
+  padding: 12px;
 }
 
-.item-wrapper {
-  position: absolute;
-  will-change: transform, width, height, opacity;
-  padding: 6px;
-  top: 0;
-  left: 0;
-}
-
-.item-wrapper > .item-img {
-  position: relative;
-  /* background-size: cover; */
-  background-position: center center;
+.masonry-cell {
+  display: block;
   width: 100%;
-  height: 100%;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  break-inside: avoid;
   border-radius: 10px;
-  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  animation: masonry-in 0.5s ease both;
+}
+
+.masonry-cell img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes masonry-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

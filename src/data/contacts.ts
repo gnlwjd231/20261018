@@ -15,16 +15,17 @@ export interface ContactGroup {
 export const GROOM: Contact = {
   role: '신랑',
   name: '오기승',
-  phone: '010-2774-5201',
-  bank: null,
-  account: null,
+  phone: null,
+  // ponytail: 가상 계좌(레이아웃 확인용) — 실계좌 확정되면 교체
+  bank: '가상은행',
+  account: '000-000-000001',
 }
 
 /** 신부 */
 export const BRIDE: Contact = {
   role: '신부',
   name: '박휘정',
-  phone: '010-2327-4009',
+  phone: null,
   bank: '하나은행',
   account: '135-910012-95905',
 }
@@ -34,14 +35,15 @@ export const PARENTS: ContactGroup[] = [
   {
     side: '신랑측',
     members: [
-      { role: '아버지', name: '오병목', phone: '010-2774-5201', bank: null, account: null },
-      { role: '어머니', name: '최경자', phone: '010-2774-5201', bank: null, account: null },
+      { role: '아버지', name: '오병목', phone: null, bank: '가상은행', account: '000-000-000002' },
+      { role: '어머니', name: '최경자', phone: null, bank: '가상은행', account: '000-000-000003' },
     ],
   },
   {
     side: '신부측',
     members: [
-      { role: '아버지', name: '박호준', phone: '010-7190-3450', bank: null, account: null },
+      { role: '아버지', name: '박호준', phone: null, bank: '가상은행', account: '000-000-000004' },
+      { role: '어머니', name: '안수현', phone: null, bank: '가상은행', account: '000-000-000005' },
     ],
   },
 ]
