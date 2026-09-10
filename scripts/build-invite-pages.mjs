@@ -28,6 +28,11 @@ for (const page of PAGES) {
   html = setContent(html, 'property="og:url', `${SITE}/${page.slug}`)
   html = setContent(html, 'property="og:image', `${SITE}/${page.img}`)
   html = setContent(html, 'name="twitter:image', `${SITE}/${page.img}`)
+  // ponytail: JS-only redirect — scrapers read OG above, browsers bounce to /
+  html = html.replace(
+    '</head>',
+    `<link rel="canonical" href="${SITE}/" />\n<script>location.replace("/")</script>\n</head>`,
+  )
   const dir = join(dist, page.slug)
   mkdirSync(dir, { recursive: true })
   writeFileSync(join(dir, 'index.html'), html)
