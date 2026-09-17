@@ -16,9 +16,8 @@ export const GROOM: Contact = {
   role: '신랑',
   name: '오기승',
   phone: null,
-  // ponytail: 가상 계좌(레이아웃 확인용) — 실계좌 확정되면 교체
-  bank: '가상은행',
-  account: '000-000-000001',
+  bank: '하나은행',
+  account: '477-910276-46607',
 }
 
 /** 신부 */
@@ -35,15 +34,15 @@ export const PARENTS: ContactGroup[] = [
   {
     side: '신랑측',
     members: [
-      { role: '아버지', name: '오병목', phone: null, bank: '가상은행', account: '000-000-000002' },
-      { role: '어머니', name: '최경자', phone: null, bank: '가상은행', account: '000-000-000003' },
+      { role: '아버지', name: '오병묵', phone: null, bank: '제일은행', account: '157-20-201684' },
+      { role: '어머니', name: '최경자', phone: null, bank: '신한은행', account: '110-432-607108' },
     ],
   },
   {
     side: '신부측',
     members: [
-      { role: '아버지', name: '박호준', phone: null, bank: '가상은행', account: '000-000-000004' },
-      { role: '어머니', name: '안수현', phone: null, bank: '가상은행', account: '000-000-000005' },
+      { role: '아버지', name: '박호준', phone: null, bank: '우리은행', account: '1005-9010411747' },
+      { role: '어머니', name: '안수현', phone: null, bank: '농협', account: '821110-52-037493' },
     ],
   },
 ]
