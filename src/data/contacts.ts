@@ -41,7 +41,7 @@ export const PARENTS: ContactGroup[] = [
   {
     side: '신부측',
     members: [
-      { role: '아버지', name: '박호준', phone: null, bank: '우리은행', account: '1005-9010411747' },
+      { role: '아버지', name: '박호준', phone: null, bank: '우리은행', account: '1005-901-411747 ' },
       { role: '어머니', name: '안수현', phone: null, bank: '농협', account: '821110-52-037493' },
     ],
   },
